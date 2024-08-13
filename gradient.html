@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Gradient Border Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(1turn);
+            }
+        }
+
+        .rainbow {
+            position: relative;
+            z-index: 0;
+            width: 400px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .rainbow::before {
+            content: '';
+            position: absolute;
+            z-index: -2;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                rgba(0, 0, 139, 1),    /* Dark Blue */
+                rgba(0, 0, 255, 1),    /* Blue */
+                rgba(173, 216, 230, 1),/* Light Blue */
+                rgba(0, 0, 255, 1),    /* Blue */
+                rgba(0, 0, 139, 1)     /* Dark Blue */
+            );
+            background-size: 600% 600%;
+            animation: rotate 4s linear infinite;
+        }
+
+        .rainbow::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 6px;
+            top: 6px;
+            width: calc(100% - 12px);
+            height: calc(100% - 12px);
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rainbow">
+        Rotating border
+    </div>
+</body>
+</html>

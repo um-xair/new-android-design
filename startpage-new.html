@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton - Start Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            background-color: #fff;
+            overflow: hidden;
+            position: relative; /* Ensure video covers background */
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire background */
+            z-index: -1; /* Place the video behind other content */
+            
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            width: 300px; 
+            margin-top: 100px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Apply animations to button containers */
+        .buttons-container-1,
+        .buttons-container-2,
+        .buttons-container-3 {
+            padding: 30px 20px;
+            border-radius: 30px 30px 0 0;
+            width: 92%;
+            position: absolute;
+            left: 0;
+            opacity: 0; /* Start with the containers hidden */
+            transition: .5s ease;
+        }
+
+        /* Define delays for the animations */
+        .buttons-container-3 {
+            bottom: 0;
+            height: 100px;
+            background-color: #373A40; /* Adjust this color as needed */
+            animation: slideIn 0.5s forwards; /* Slide in and hold */
+            animation-delay: 0s; /* First to appear */
+            box-shadow: 0px -10px 15px -3px rgba(0, 0, 0, 0.15);
+        }
+
+        .buttons-container-2 {
+            bottom: 10px;
+            height: 180px; /* Adjust based on your layout */
+            background-color: #686D76; /* Adjust this color as needed */
+            animation: slideIn 0.5s forwards;
+            animation-delay: 0.5s; /* Slide in after container-3 */
+            box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.15);
+        }
+
+        .buttons-container-1 {
+            bottom: 100px;
+            height: 180px; /* Adjust based on your layout */
+            background-color: #B2B2B2; /* Adjust this color as needed */
+            animation: slideIn 0.5s forwards;
+            animation-delay: 1s; /* Slide in after container-2 */
+            box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.15);
+        }
+
+        .buttons {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons a {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+
+        .buttons .login {
+            background-color: #000;
+            color: #fff;
+            transition: .5s ease;
+        }
+
+        .buttons .register {
+            background-color: #fff;
+            color: #000;
+            border: 1.5px solid #000;
+            transition: .5s ease;
+        }
+
+        .buttons .login:hover {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .buttons .register:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .buttons .guest {
+            background-color: #fff;
+            color: #000;
+            border: 1.5px solid #000;
+            transition: .5s ease;
+        }
+
+        .buttons .guest:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .footer {
+            margin-top: 100px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer-icons img {
+            width: 80%; 
+            max-width: 300px; 
+        }
+
+        /* Add hover effect for button containers */
+        .buttons-container-1:hover a,
+        .buttons-container-2:hover a,
+        .buttons-container-3:hover a {
+            color: #000; /* Change text color to black on hover */
+        }
+
+        /* Existing styles for buttons */
+        .buttons-container-1 a,
+        .buttons-container-2 a,
+        .buttons-container-3 a {
+            font-weight: bold;
+            color: white; /* Default text color */
+            text-decoration: none;
+            transition: .3s ease;
+        }
+
+        /* Animation class for sliding out */
+        .slide-out {
+            animation: slideOutLeft 0.5s ease; /* Adjust the duration as needed */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="background-video" autoplay loop muted id="backgroundVideo">
+        <source src="img/0812.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+
+        <!-- Buttons Section -->
+        <div class="buttons-container-1">
+            <a href="login.html" class="login">Log in</a>
+        </div>
+        <div class="buttons-container-2">
+            <a href="index.html" class="guest">Register</a>
+        </div>
+        <div class="buttons-container-3">
+            <a href="register.html" class="register">Continue as a guest</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.buttons-container-1 a').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const href = this.getAttribute('href');
+            
+            // Add the slide-out class to body
+            document.body.classList.add('slide-out');
+            
+            // Redirect after animation completes
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500); // Match the duration of the animation
+        });
+
+        const video = document.getElementById('backgroundVideo');
+        video.playbackRate = 0.7; // Adjust this value to slow down the video
+    </script>
+</body>
+</html>
