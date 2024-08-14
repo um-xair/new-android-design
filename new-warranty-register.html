@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton - Warranty</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        .warranty-container {
+            max-width: 700px;
+            padding: 50px;
+        }
+        .warranty-container h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .warranty-container p, .warranty-container li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .warranty-container ul {
+            padding-left: 20px;
+            margin: 0;
+            list-style-type: disc;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-group .product-category {
+            margin-top: 20px;
+        }
+        .form-group .product-category label {
+            font-weight: normal;
+        }
+        .rating {
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+        }
+        .rating input[type="radio"] {
+            display: none; 
+        }
+        .rating label {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ccc; 
+            transition: color 0.2s;
+        }
+        .rating input[type="radio"]:checked ~ label {
+            color: #f5b301; 
+        }
+        .rating input[type="radio"]:checked {
+            color: #f5b301; 
+        }
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #f5b301; 
+        }
+        
+        .rating input[type="radio"]:checked + label {
+            color: #f5b301;
+        }
+        .rating input[type="radio"]:hover ~ label {
+            color: #f5b301; 
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #162f4e;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: .5s ease;
+        }
+        .submit-btn:hover {
+            background-color: #333;
+        }
+        .form-group input[type="file"] {
+            width: 90%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f9f9f9; /* Light background color */
+            cursor: pointer; /* Change cursor on hover */
+            transition: border-color 0.2s; /* Smooth transition */
+            margin-top: 10px;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: #888; /* Darker border on hover */
+        }
+
+        .form-group input[type="file"]:focus {
+            outline: none; /* Remove default outline */
+            border-color: #555; /* Darker border when focused */
+        }
+
+        .form-group p {
+            margin-top: 5px; /* Add spacing between input and text */
+            color: #777; /* Lighter color for instructions */
+        }
+
+        #stroller-button, #car-seat-button, #high-chair-button, #others-button {
+            padding: 10px 20px; /* Padding for the button */
+            border: none; /* Remove border */
+            border-radius: 10px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Increase font size */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            margin-top: 10px;
+            width: 140px;
+            height: 50px;
+        }
+
+        #stroller-button:hover, #car-seat-button:hover, #high-chair-button:hover, #others-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        #stroller-options div, #car-seat-options div, #high-chair-options div, #others-options div {
+            margin-top: 10px; /* Spacing between checkboxes */
+        }
+
+        #stroller-button{
+            background: pink;
+            color: #000;
+        }
+
+        #stroller-button:hover{
+            background: rgb(255, 141, 160);
+            color: white;
+        }
+
+        #car-seat-button{
+            background: rgb(210, 210, 255);
+            color: #000;
+        }
+
+        #car-seat-button:hover{
+            background: #9f9fd7;
+            color: white;
+        }
+
+        #high-chair-button{
+            background: rgb(168, 244, 169);
+            color: #000;
+        }
+
+        #high-chair-button:hover{
+            background: rgb(106, 156, 106);
+            color: white;
+        }
+
+        #others-button{
+            background: rgb(250, 250, 179);
+            color: #000;
+        }
+
+        #others-button:hover{
+            background: rgb(175, 175, 130);
+            color: white;
+        }
+
+
+    </style>
+</head>
+
+<body style="height: auto; background: #f4f9ff;">
+    
+    <div class="warranty-container">
+
+        <header>
+            <a href="new-warranty.html" class="back-button"><i class="fa fa-chevron-left"></i></a>
+            <h1>Warranty Register</h1>
+        </header>
+        
+        <form style="margin-top: 100px;">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="Alyssa" >
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" value="+60 **-*******" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="alyssa@gmail.com" >
+            </div>
+            <div class="form-group">
+                <label for="product">Choose Your Product</label>
+                <div class="product-category">
+                    <button type="button" id="stroller-button"><strong>Stroller</strong></button>
+                    <div id="stroller-options" style="display: none;">
+                        <div>
+                            <input type="checkbox" id="nior-stroller" name="product[]" value="Nior Stroller">
+                            <label for="nior-stroller">Nior Stroller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="mova-stroller" name="product[]" value="Mova Stroller">
+                            <label for="mova-stroller">Mova Stroller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="citi-stroller" name="product[]" value="Citi Stroller">
+                            <label for="citi-stroller">Citi Stroller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="roxy-stroller" name="product[]" value="Roxy Stroller">
+                            <label for="roxy-stroller">Roxy Stroller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="shining-light-stroller" name="product[]" value="Shining Light Stroller">
+                            <label for="shining-light-stroller">Shining Light Stroller</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="light-stroller" name="product[]" value="Light+ Stroller">
+                            <label for="light-stroller">Light+ Stroller</label>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="product-category">
+                    <button type="button" id="car-seat-button"><strong>Car Seat</strong></button>
+                    <div id="car-seat-options" style="display: none;">
+                        <div>
+                            <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                            <label for="maple-car-seat">Maple 360 Safety Car Seat</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                            <label for="cozy-car-seat">Cozy 360 Car Seat</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                            <label for="one-spin-car-seat">OneSpin+ 360 Car Seat</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="i-smart-car-seat" name="product[]" value="I-Smart 360 Car Seat">
+                            <label for="i-smart-car-seat">I-Smart 360 Car Seat</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="silver-car-seat" name="product[]" value="Silver">
+                            <label for="silver-car-seat">Silver</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="miumo-car-seat" name="product[]" value="Miumo I-Size Carrier">
+                            <label for="miumo-car-seat">Miumo I-Size Carrier</label>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="product-category">
+                    <button type="button" id="high-chair-button"><strong>High Chair</strong></button>
+                    <div id="high-chair-options" style="display: none;">
+                        <div>
+                            <input type="checkbox" id="pali-high-chair" name="product[]" value="Pali 2 in 1 Swing High Chair">
+                            <label for="pali-high-chair">Pali 2 in 1 Swing High Chair</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="go-berry-high-chair" name="product[]" value="Go Berry High Chair">
+                            <label for="go-berry-high-chair">Go Berry High Chair</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="coco-high-chair" name="product[]" value="Coco High Chair">
+                            <label for="coco-high-chair">Coco High Chair</label>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="product-category">
+                    <button type="button" id="others-button"><strong>Others</strong></button>
+                    <div id="others-options" style="display: none;">
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Quinton Dream2Gether</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Sensory Playmat - Farm House XL</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">Sensory Playmat - Farm House M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Playmat Scandi Collage XL</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Playmat Scandi Collage M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">Playmat Twig & Maze M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Playmat Bloom & Entry M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">Playmat Spore & Wooden M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Playmat Seed & Pottery M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Playmat Good Dinosaur M</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">AR Playmat - Aesop's Fables M</label>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="purchase-date">Date of Purchase</label>
+                <input type="date" id="purchase-date" name="purchase-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Invoice Number</label>
+                <input type="text" id="invoice" name="name" value="" readonly>
+            </div>
+
+
+            <div class="form-group">
+                <label for="product"></label>
+                <div class="product-category">
+                    <strong>Is this your first Quinton product?</strong>
+                    <div>
+                        <input type="checkbox" id="nior-stroller" name="product[]" value="Nior Stroller">
+                        <label for="nior-stroller">YES</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="mova-stroller" name="product[]" value="Mova Stroller">
+                        <label for="mova-stroller">NO</label>
+                    </div>
+                </div>
+
+                <div class="product-category">
+                    <strong>How did you find out about the Quinton?</strong>
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Quinton Website</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Baby Fair / Baby Expo</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">Shopee / Lazada</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="i-smart-car-seat" name="product[]" value="I-Smart 360 Car Seat">
+                        <label for="i-smart-car-seat">Another Website</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="silver-car-seat" name="product[]" value="Silver">
+                        <label for="silver-car-seat">Baby Store</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="miumo-car-seat" name="product[]" value="Miumo I-Size Carrier">
+                        <label for="miumo-car-seat">Family / Friends</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="miumo-car-seat" name="product[]" value="Miumo I-Size Carrier">
+                        <label for="miumo-car-seat">Blog / Facebook / Instagram / Tiktok</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="miumo-car-seat" name="product[]" value="Miumo I-Size Carrier">
+                        <label for="miumo-car-seat">Already own Quinton product</label>
+                    </div>
+                </div>
+
+                <div class="product-category">
+                    <strong>Why you choose a Quinton product?</strong>
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Quality</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Price</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">Appearance</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="maple-car-seat" name="product[]" value="Maple 360 Safety Car Seat">
+                        <label for="maple-car-seat">Functionality</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cozy-car-seat" name="product[]" value="Cozy 360 Car Seat">
+                        <label for="cozy-car-seat">Good Reviews</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="one-spin-car-seat" name="product[]" value="OneSpin+ 360 Car Seat">
+                        <label for="one-spin-car-seat">I received the product as a gift</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>How many STARS for Quinton?</label>
+                <div class="rating" style="flex-direction: row-reverse; direction: ltr;">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+                </div>
+            </div>
+            
+            
+
+            <div class="form-group">
+                <label for="photos">Upload Photos</label>
+                <input type="file" id="photos" name="photos" accept="image/*" multiple>
+                <p style="font-size: 12px;">Max 2 files.</p>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="terms.html">terms and conditions</a></label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("stroller-button").addEventListener("click", function() {
+    var strollerOptions = document.getElementById("stroller-options");
+    if (strollerOptions.style.display === "none" || strollerOptions.style.display === "") {
+        strollerOptions.style.display = "block"; // Show the checkboxes
+    } else {
+        strollerOptions.style.display = "none"; // Hide the checkboxes
+    }
+});
+
+document.getElementById("car-seat-button").addEventListener("click", function() {
+    var carSeatOptions = document.getElementById("car-seat-options");
+    if (carSeatOptions.style.display === "none" || carSeatOptions.style.display === "") {
+        carSeatOptions.style.display = "block"; // Show the checkboxes
+    } else {
+        carSeatOptions.style.display = "none"; // Hide the checkboxes
+    }
+});
+document.getElementById("high-chair-button").addEventListener("click", function() {
+    var highChairOptions = document.getElementById("high-chair-options");
+    if (highChairOptions.style.display === "none" || highChairOptions.style.display === "") {
+        highChairOptions.style.display = "block"; // Show the checkboxes
+    } else {
+        highChairOptions.style.display = "none"; // Hide the checkboxes
+    }
+});
+
+document.getElementById("others-button").addEventListener("click", function() {
+    var othersOptions = document.getElementById("others-options");
+    if (othersOptions.style.display === "none" || othersOptions.style.display === "") {
+        othersOptions.style.display = "block"; // Show the checkboxes
+    } else {
+        othersOptions.style.display = "none"; // Hide the checkboxes
+    }
+});
+
+
+
+
+</script>
+        
+        
+</body>
+</html>

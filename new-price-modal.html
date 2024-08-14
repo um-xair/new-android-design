@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Price Range</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #e5f1ff;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: zoomOut 0.5s ease forwards;
+            transform: scale(0);
+        }
+
+        @keyframes zoomOut {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #162f4e;
+        }
+
+        .modal-content p {
+            color: #666;
+            margin-top: -10px;
+            font-size: 14px;
+        }
+
+        .slider-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #162f4e;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .price-range-display {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .price-box {
+            text-align: center;
+            font-size: 16px;
+            color: #162f4e;
+        }
+
+        .price-box .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .modal-button-container {
+            text-align: center;
+        }
+
+        .modal-button-container button {
+            background-color: #000;
+            color: white;
+            border: none;
+            width: 200px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-button-container button:hover {
+            background-color: #162f4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-content">
+            <h2>Price Range</h2>
+            <p>Filter your price</p>
+
+            <div class="slider-container">
+                <input type="range" min="40" max="3000" value="100" class="slider" id="minRange">
+                <input type="range" min="40" max="3000" value="700" class="slider" id="maxRange">
+            </div>
+
+            <div class="price-range-display">
+                <div class="price-box">
+                    <div>Minimum</div>
+                    <div class="price" id="minPrice">RM40</div>
+                </div>
+                <div class="price-box">
+                    <div>Maximum</div>
+                    <div class="price" id="maxPrice">RM3000</div>
+                </div>
+            </div>
+
+            <div class="modal-button-container">
+                <button onclick="window.location.href='product-page.html'">Okay</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const minRange = document.getElementById('minRange');
+        const maxRange = document.getElementById('maxRange');
+        const minPrice = document.getElementById('minPrice');
+        const maxPrice = document.getElementById('maxPrice');
+
+        minRange.oninput = function() {
+            minPrice.innerHTML = 'RM' + this.value;
+            if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
+                maxRange.value = this.value;
+                maxPrice.innerHTML = 'RM' + maxRange.value;
+            }
+        };
+
+        maxRange.oninput = function() {
+            maxPrice.innerHTML = 'RM' + this.value + '+';
+            if (parseInt(maxRange.value) <= parseInt(minRange.value)) {
+                minRange.value = this.value;
+                minPrice.innerHTML = 'RM' + minRange.value;
+            }
+        };
+    </script>
+</body>
+</html>

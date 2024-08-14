@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9ff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 80px;
+        }
+
+        .search-container .back-button {
+            color: #162f4e;
+            font-size: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .search-container .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #162f4e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        .search-container .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .filter-options {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .filter-options a {
+            text-decoration: none;
+            color: #162f4e;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .filter-options a.inactive {
+            color: #808080;
+        }
+
+        .products-container {
+            width: 450px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .product-card {
+            background-color: #fafafa;
+            border: 1.5px solid #162f4e;
+            border-radius: 10px;
+            box-shadow: 8px 10px 15px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 95%;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin: 10px 0;
+            margin-left: 10px;
+        }
+
+        .product-name {
+            font-size: 12px;
+            color: #162f4e;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #162f4e;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            background-color: #162f4e;
+            color: #fff;
+            border: none;
+            padding: 14px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Poppins', sans-serif;
+            transition: .5s ease;
+        }
+
+        .button-container button:hover {
+            background: #091b31;
+        }
+
+        .button-container .cart-button {
+            background-color: #fff;
+            border: 2px solid #162f4e;
+            color: #162f4e;
+            padding: 10px 13px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button-container .cart-button i {
+            margin: 0;
+        }
+
+        .button-container .cart-button:hover {
+            background-color: #162f4e;
+            color: #fff;
+        }
+
+        .button-container .cart-button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(22, 47, 78, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <a href="new-explore.html" class="back-button">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search product">
+        </div>
+    </div>
+
+    <div class="filter-options">
+        <a href="#">Relevance</a>
+        <a href="#" class="inactive">Latest</a>
+        <a href="#" class="inactive">Top Sales</a>
+        <a href="new-price-modal.html" class="inactive">Price</a>
+    </div>
+
+    <div class="products-container">
+        <div class="product-card">
+            <img src="assets/nior-3 (1).webp" alt="Noir Stroller">
+            <div class="product-info">
+                <div class="product-name">Noir Stroller</div>
+                <div class="product-price">RM999</div>
+            </div>
+            <div class="button-container">
+                <a href="product-desc.html">
+                    <button>View Product</button>
+                </a>
+                <a href="your-shopping-cart-url.html">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
+                </a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="assets/nior-3 (1).webp" alt="Noir Stroller">
+            <div class="product-info">
+                <div class="product-name">Noir Stroller</div>
+                <div class="product-price">RM999</div>
+            </div>
+            <div class="button-container">
+                <a href="product-desc.html">
+                    <button>View Product</button>
+                </a>
+                <a href="your-shopping-cart-url.html">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
+                </a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="assets/nior-3 (1).webp" alt="Noir Stroller">
+            <div class="product-info">
+                <div class="product-name">Noir Stroller</div>
+                <div class="product-price">RM999</div>
+            </div>
+            <div class="button-container">
+                <a href="product-desc.html">
+                    <button>View Product</button>
+                </a>
+                <a href="your-shopping-cart-url.html">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
+                </a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="assets/nior-3 (1).webp" alt="Noir Stroller">
+            <div class="product-info">
+                <div class="product-name">Noir Stroller</div>
+                <div class="product-price">RM999</div>
+            </div>
+            <div class="button-container">
+                <a href="product-desc.html">
+                    <button>View Product</button>
+                </a>
+                <a href="your-shopping-cart-url.html">
+                    <button class="cart-button"><i class="fa fa-shopping-cart"></i></button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

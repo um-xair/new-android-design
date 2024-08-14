@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton - Product Category</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        .product-category-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .category {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 30px;
+            background: #fff;
+            box-shadow: 8px 10px 15px 0px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 15px;
+            transition: 0.5s ease;
+            border: 1.4px solid #000;
+            height: 70px;
+        }
+
+        .category img {
+            max-height: 90px;
+            margin-right: 20px;
+        }
+
+        .category:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .category-name {
+            flex-grow: 1;
+            margin: 0 10px;
+            font-size: 20px;
+            font-weight: 600;
+            text-align-last: left;
+            margin-left: 50px;
+            color: #000;
+        }
+
+        .category a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body style="background: #f4f9ff;">
+    <div class="product-category-container">
+        <header>
+            <a href="new-homepage.html" class="back-button"><i class="fa fa-chevron-left"></i></a>
+            <h1>Product Category</h1>
+        </header>
+
+        <a href="car-seat-page.html" class="category">
+            <span class="category-name">Car Seat</span>
+            <img src="assets/maplee-1.webp" alt="Car Seat">
+        </a>
+        <a href="new-explore-stroller.html" class="category">
+            <span class="category-name">Stroller</span>
+            <img src="assets/nior-3 (1).webp" alt="Stroller">
+        </a>
+        <a href="high-chair-page.html" class="category">
+            <span class="category-name">High Chair</span>
+            <img src="assets/pali-2.webp" alt="High Chair">
+        </a>
+        <a href="playmat-page.html" class="category">
+            <span class="category-name">Playmat</span>
+            <img src="assets/Scandi Collage.png" alt="Playmats">
+        </a>
+        <a href="others-page.html" class="category">
+            <span class="category-name">Others</span>
+            <img src="assets/Scandi Collage.png" alt="Playmats">
+        </a>
+    </div>
+</body>
+</html>

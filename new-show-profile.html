@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton - Show Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        @keyframes scaleAnimation {
+            0% {
+                transform: scale(1.1);
+                opacity: 0; /* Start transparent */
+            }
+            50% {
+                opacity: 1; /* Fade in */
+            }
+            100% {
+                transform: scale(1); /* Return to normal scale */
+            }
+        }
+        .profile-container-card {
+            animation: scaleAnimation 2s forwards; /* Apply the animation */
+        }
+        .profile-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            padding-top: 70px; /* Add top padding to prevent content overlap with the fixed header */
+        }
+        .profile-container-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 30px;
+            background: #fff;
+            box-shadow: 7px 10px 15px 4px rgba(0,0,0,0.1);
+        }
+        .profile-container h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .profile-card {
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .profile-card img {
+            width: 35%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .profile-card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .profile-card p {
+            font-size: 16px;
+            color: #666666;
+        }
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Prevents interaction with the confetti */
+            overflow: hidden;
+            z-index: 9999; /* Ensures confetti is on top of everything */
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FF5733; /* Change colors for more diversity */
+            opacity: 0.7;
+            animation: fall 3s forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg); /* Falls and rotates */
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #e5f1ff;">
+    <div class="profile-container">
+        <header>
+            <a href="new-profile.html" class="back-button"><i class="fa fa-chevron-left"></i></a>
+            <h1>Profile</h1>
+        </header>
+        <div class="profile-container-card">
+            <div class="profile-card">
+                <img src="assets/profile.jpg" alt="Profile Picture">
+                <h2>Alyssa Umairah</h2>
+                <p>5 Months With Quinton</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Disable scrolling
+            document.body.style.overflow = 'hidden';
+
+            const confettiContainer = document.createElement('div');
+            confettiContainer.classList.add('confetti');
+            document.body.appendChild(confettiContainer);
+
+            // Function to create confetti pieces
+            function createConfetti() {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                // Randomize the position
+                confettiPiece.style.left = Math.random() * window.innerWidth + 'px';
+                // Randomize the color
+                const colors = ['#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6'];
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confettiPiece);
+
+                // Remove the piece after animation
+                confettiPiece.addEventListener('animationend', () => {
+                    confettiContainer.removeChild(confettiPiece);
+                });
+            }
+
+            // Generate confetti pieces at random intervals
+            const confettiInterval = setInterval(() => {
+                createConfetti();
+            }, 100);
+
+            // Stop generating confetti after a certain duration (e.g., 5 seconds)
+            setTimeout(() => {
+                clearInterval(confettiInterval);
+                // Enable scrolling again
+                document.body.style.overflow = '';
+                document.body.removeChild(confettiContainer); // Remove confetti container
+            }, 5000); // Change this duration as needed
+        });
+    </script>
+</body>
+</html>

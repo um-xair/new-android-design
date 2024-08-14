@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .top-container {
+            top: 0;
+            margin-top: -180px;
+            background-color: #e5f1ff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            height: 150px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-container h1 {
+            margin-top: -40px;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .top-container p {
+            margin-top: -10px;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        .top-container img {
+            max-height: 100px;
+            margin-left: 50px;
+            margin-top: -40px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: -20px;
+            background: #a3cdff;
+            width: 90%;
+            border-radius: 20px;
+            height: 100px;
+            justify-content: center;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+            margin: -30px auto 30px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #e5f1ff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #1F316F;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 11px;
+            transition: color 0.3s ease;
+        }
+
+        .bottom-nav a i {
+            font-size: 25px;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .bottom-nav a:hover i {
+            color: #0b1828;
+        }
+
+        .home-container {
+            width: 100%;
+            padding-top: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .product-category-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 4rem;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .category-item img {
+            width: 70px;
+            height: 70px;
+            background-color: #e5f1ff;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .category-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .centered-text {
+            text-align: center;
+            margin-top: 20px;
+            width: 80%;
+            height: 150px;
+            background: #e5f1ff;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .centered-text i {
+            font-size: 50px;
+            color: #1F316F;
+            margin-top: 10px;
+            text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .centered-text p {
+            font-size: 13px;
+            margin: 20px;
+            color: #333; 
+        }
+
+        .centered-text small {
+            font-size: 8px;
+            color: #555;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .upcoming-event {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 100%;
+            padding-bottom: 200px;
+        }
+
+        .event-title {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 20px;
+            color: #1F316F;
+            padding-left: 10px;
+        }
+
+        .event-title i {
+            font-size: 20px;
+            margin-right: 10px;
+            color: #1F316F;
+        }
+
+        .event-title h2 {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .event-carousel {
+            margin-top: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-container {
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+            background: #f7f7f7;
+            color: #0b1828;
+            font-size: 15px;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="top-container">
+            <div>
+                <h1>Welcome to Quinton!</h1>
+                <p>Your trusted source for baby products.</p>
+            </div>
+            <img src="assets/quinton-logo-identity.ico" alt="Quinton Logo">
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Search for products..." />
+            <button>
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <div class="product-category-container">
+            <div class="category-item">
+                <img src="assets/maplee-1.webp" alt="Category 1">
+                <p>Car seat</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/nior-3 (1).webp" alt="Category 2">
+                <p>Stroller</p>
+            </div>
+            <div class="category-item">
+                <img src="assets/pali-2.webp" alt="Category 3">
+                <p>High Chair</p>
+            </div>
+        </div>
+
+        <div class="centered-text">
+            <i id="trophy-icon" class="fas fa-trophy"></i>
+            <p>Congratulations! You've been with Quinton for 5 days</p>
+            <small>Stay with Quinton for 90 days and unlock new features</small>
+        </div>
+
+        <div class="upcoming-event">
+            <div class="event-title">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>Upcoming Event</h2>
+            </div>
+            <div class="event-carousel">
+                <div class="carousel-container" id="eventCarousel">
+                    <div class="carousel-slide" id="eventSliderImages">
+                        <img src="assets/banner-1.png" alt="Event 1">
+                        <img src="assets/banner-3.png" alt="Event 2">
+                        <img src="assets/banner-1.png" alt="Event 3">
+                    </div>
+                    <button class="arrow arrow-left" id="prevEventBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="arrow arrow-right" id="nextEventBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bottom-nav">
+        <a href="new-warranty.html">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Warranty</span>
+        </a>
+        <a href="new-store-locator.html">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Find Us</span>
+        </a>
+        <a href="new-homepage.html">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="new-explore.html">
+            <i class="fas fa-search"></i>
+            <span>Explore</span>
+        </a>
+        <a href="new-profile.html">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </footer>
+    
+    <script>
+        document.getElementById('trophy-icon').addEventListener('click', function() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
+
+        let currentEventIndex = 0;
+        const eventSliderImages = document.getElementById('eventSliderImages');
+        const eventImagesCount = eventSliderImages.children.length;
+
+        function updateEventSlider() {
+            const translateX = -currentEventIndex * 100;
+            eventSliderImages.style.transform = `translateX(${translateX}%)`;
+        }
+
+        document.getElementById('nextEventBtn').addEventListener('click', () => {
+            currentEventIndex = (currentEventIndex + 1) % eventImagesCount;
+            updateEventSlider();
+        });
+
+        document.getElementById('prevEventBtn').addEventListener('click', () => {
+            currentEventIndex = (currentEventIndex - 1 + eventImagesCount) % eventImagesCount;
+            updateEventSlider();
+        });
+
+        setInterval(() => {
+            currentEventIndex = (currentEventIndex + 1) % eventImagesCount;
+            updateEventSlider();
+        }, 5000);
+    </script>
+</body>
+</html>

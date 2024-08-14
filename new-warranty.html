@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinton - Warranty</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f9ff;
+            overflow: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 50px;
+            border-bottom: 1px solid #eaeaea;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        h1 {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .warranty-container {
+            max-width: 700px;
+            padding: 20px;
+            margin-top: -300px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            gap: 2rem;
+        }
+
+        .button-1,
+        .button-2 {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 160px;
+            height: 200px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: inherit;
+        }
+
+        .button-1 {
+            background-color: #d8eaff;
+        }
+
+        .button-1:hover {
+            background-color: #b5d6ff;
+            color: #fff;
+        }
+
+        .button-2 {
+            background-color: #d1ebf9;
+            text-decoration: none;
+        }
+
+        .button-2:hover {
+            background-color: #b6daec;
+            color: #fff;
+        }
+
+        .button-1 svg,
+        .button-2 svg {
+            margin-bottom: 20px;
+        }
+
+        .button-1:hover svg,
+        .button-2:hover svg {
+            fill: #fff;
+            transition: 0.5s ease;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warranty-container">
+        <header>
+            <a href="new-homepage.html" class="back-button"><i class="fa fa-chevron-left"></i></a>
+            <h1>Warranty Register</h1>
+        </header>
+
+        <div class="buttons">
+            <div class="button-1">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#000000">
+                    <path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/>
+                </svg>
+                Warranty <br>Conditions
+            </div>
+            <a href="new-warranty-register.html" class="button-2">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#000000">
+                    <path d="M560-80v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T903-300L683-80H560Zm300-263-37-37 37 37ZM620-140h38l121-122-18-19-19-18-122 121v38ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v120h-80v-80H520v-200H240v640h240v80H240Zm280-400Zm241 199-19-18 37 37-18-19Z"/>
+                </svg>
+                Warranty <br>Register
+            </a>
+        </div>
+    </div>
+</body>
+</html>
