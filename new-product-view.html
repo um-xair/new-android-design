@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f9ff;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 25px;
+            background-color: #f4f9ff;
+        }
+
+        .image-container {
+    position: relative;
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+.slider img {
+    min-width: 100%; /* Each image takes full width */
+    border-radius: 30px; /* Maintain the border radius */
+}
+
+.arrow {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    width: 30px; /* Width of the arrow button */
+    height: 30px; /* Height of the arrow button */
+    border-radius: 50%; /* Round button */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    cursor: pointer; /* Change cursor on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+    z-index: 10; /* Ensure the arrow is above other elements */
+}
+
+.left-arrow {
+    right: 60px; /* Position the left arrow to the left of the right arrow */
+}
+
+.right-arrow {
+    right: 20px; /* Position the right arrow */
+}
+
+
+
+        .image-container img {
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        .button {
+            position: absolute;
+            top: 15px;
+            background: white;
+            width: 40px; /* Increased for better icon visibility */
+            height: 40px; /* Increased for better icon visibility */
+            border-radius: 50%;
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            left: 15px;
+            color: #162f4e;
+        }
+
+        .share-button {
+            right: 60px; /* Adjusted for spacing */
+            color: #162f4e;
+        }
+
+        .heart-button {
+            right: 10px;
+            color: #162f4e;
+
+        }
+
+        .property-details {
+            margin-top: 20px;
+        }
+
+        .property-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .property-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .rating {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .rating i {
+            color: #f39c12;
+            margin-right: 5px;
+        }
+
+        .rating span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .notice {
+            display: flex;
+            align-items: center;
+            background-color: #162f4e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .notice i {
+            font-size: 20px;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .notice span {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .host-info-icons {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #162f4e;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 200px;
+        }
+
+        .host-info-icons .icon-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .host-info-icons .icon-group i {
+            font-size: 25px;
+            color: #162f4e;
+            margin-right: 20px;
+        }
+
+        .host-info-icons .icon-group h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .host-info-icons .icon-group p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0 0;
+        }
+
+        .price-reserve {
+    position: fixed; /* Keeps the element fixed on the screen */
+    bottom: 0; /* Positions it at the bottom */
+    left: 50%; /* Positions the left edge at the center of the screen */
+    transform: translateX(-50%); /* Moves the element to the left by 50% of its width, centering it */
+    width: 87%; /* Adjusts the width */
+    z-index: 1000; /* Ensures it stays on top of other elements */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #162f4e;
+    border-radius: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    margin-bottom: 20px; /* Adds a margin at the bottom */
+}
+
+
+.price-reserve .price {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.reserve-button {
+    background-color: #fff;
+    color: #162f4e;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reserve-button:hover {
+    background-color: #d1e6ff;
+}
+
+.read-more-button {
+    background-color: #d1e6ff;
+    color: #000;
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0; /* Center the button */
+    transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+    background-color: #162f4e;
+    color: #fff;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="image-container">
+            <div class="slider">
+                <img src="assets/maplephoto.jpg" alt="Property Image">
+                <img src="assets/Maple car seat lifestyle.webp" alt="Property Image">
+                <img src="assets/profile.jpg" alt="Property Image">
+            </div>
+            <a href="new-product-showcase.html">
+                <div class="button back-button">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </a>
+            
+            <div class="button share-button">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <div class="button heart-button">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="arrow left-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="arrow right-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+        
+
+        <div class="property-details">
+            <div class="property-title">
+                【Quinton】 Maple 360 Car Seat
+            </div>
+            <div class="property-subtitle">
+                Quinton Maple 360 Baby Car Seat Newborn to 12 Years Old with ISOFIX | R129
+            </div>
+            <div class="rating">
+                <i class="fas fa-star"></i>
+                <span>4.79 · 19 reviews</span>
+            </div>
+        </div>
+
+        <div class="notice">
+            <i class="fas fa-gem"></i>
+            <span>This is a rare find - Maple 360 are the latest car seat from Quinton</span>
+        </div>
+
+
+        <!-- New Design Added Here -->
+        <div class="host-info-icons">
+            <div class="icon-group">
+                <i class="fas fa-shield"></i>
+                <div>
+                    <h4>safety features</h4>
+                    <p>isofix & support leg installation</p>
+                </div>
+            </div>
+            <div class="icon-group">
+                <i class="fas fa-feather"></i>
+                <div>
+                    <h4>comfort and convenience</h4>
+                    <p>biocurve seat design</p>
+                </div>
+            </div>
+            <div class="icon-group">
+                <i class="fas fa-palette"></i>
+                <div>
+                    <h4>design features</h4>
+                    <p>fun shoulder straps with silicone paw prints</p>
+                </div>
+            </div>
+            <button class="read-more-button">Read More</button>
+        </div>
+
+        <div class="price-reserve">
+            <div class="price">RM181</div>
+            <button class="reserve-button">Reserve</button>
+        </div>
+
+    </div>
+
+
+    <script>
+        const images = document.querySelectorAll('.slider img');
+        const totalImages = images.length;
+        let currentIndex = 0;
+    
+        // Function to show the next image
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages; // Loop back to the first image
+            updateSlider();
+        }
+    
+        // Function to show the previous image
+        function showPreviousImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Loop to the last image
+            updateSlider();
+        }
+    
+        // Function to update the slider's position
+        function updateSlider() {
+            const slider = document.querySelector('.slider');
+            const offset = -currentIndex * 100; // Calculate the offset
+            slider.style.transform = `translateX(${offset}%)`; // Apply the transform
+        }
+    
+        // Event listeners for buttons
+        document.querySelector('.back-button').addEventListener('click', showPreviousImage);
+        document.querySelector('.share-button').addEventListener('click', () => {
+            alert("Share functionality not implemented yet!");
+        });
+        document.querySelector('.heart-button').addEventListener('click', () => {
+            alert("Added to favorites!");
+        });
+        
+        // Event listeners for arrows
+        document.querySelector('.left-arrow').addEventListener('click', showPreviousImage);
+        document.querySelector('.right-arrow').addEventListener('click', showNextImage);
+    
+        // Automatic slide every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
+    
+    
+
+</body>
+</html>
