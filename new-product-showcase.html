@@ -167,6 +167,156 @@
             cursor: pointer;
         }
 
+        .filter-container {
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+
+        .filter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none; /* Initially hidden */
+        }
+
+        .filter-header {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .filter-header h1 {
+            text-align: center;
+            flex: 1;
+            font-size: 24px;
+        }
+
+        .filter-header .close-icon {
+            position: absolute;
+            left: 0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .filter-section {
+            margin: 30px 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .toggle-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .toggle-button {
+            background-color: #fff;
+            border: 2px solid #162f4e;
+            border-radius: 20px;
+            padding: 10px 0;
+            cursor: pointer;
+            text-align: center;
+            transition: .5s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #162f4e;
+            color: #fff;
+        }
+
+        .toggle-button.active {
+            background-color: #162f4e;
+            color: #fff;
+        }
+
+        .price-range {
+            margin: 20px 0;
+        }
+
+        .price-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .price-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #162f4e;
+            border: 2px solid #162f4e;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .price-range-display {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .price-box {
+            text-align: center;
+            font-size: 16px;
+            color: #162f4e;
+        }
+
+        .price-box .price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .modal-button-container {
+            text-align: center;
+        }
+
+        .modal-button-container button {
+            background-color: #162f4e;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-button-container button:hover {
+            background-color: #041428;
+        }
+
+        
+
+
     </style>
 </head>
 <body>
@@ -184,6 +334,8 @@
         </div>
     </div>
 
+    
+
     <div class="container">
         <a href="new-product-view.html">
             <div class="image-container">
@@ -251,12 +403,96 @@
                 </div>
                 <div class="price">
                     <span>$299.99</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-overlay"></div>
+
+    <!-- Filter modal -->
+    <div class="filter-container">
+        <div class="filter-header">
+            <i class="fas fa-times close-icon"></i>
+            <h1>Filters</h1>
+        </div>
+
+        <div class="filter-section">
+            <h2>Product Category</h2>
+            <div class="toggle-buttons">
+                <button class="toggle-button active">Stroller</button>
+                <button class="toggle-button">Car Seat</button>
+                <button class="toggle-button">High Chair</button>
+                <button class="toggle-button">Playmat</button>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <h2>Price range</h2>
+            <div class="price-range">
+                <input type="range" min="40" max="5000" value="40" class="price-slider" id="minRange">
+                <input type="range" min="40" max="5000" value="5000" class="price-slider" id="maxRange">
+                <div class="price-range-display">
+                    <div class="price-box">
+                        <div>Minimum</div>
+                        <div class="price" id="minPrice">RM40</div>
+                    </div>
+                    <div class="price-box">
+                        <div>Maximum</div>
+                        <div class="price" id="maxPrice">RM3000</div>
+                    </div>
+                </div>
+                <div class="modal-button-container">
+                    <button onclick="window.location.href='new-product-showcase.html'">Okay</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+
+        //price slider
+        const minRange = document.getElementById('minRange');
+        const maxRange = document.getElementById('maxRange');
+        const minPrice = document.getElementById('minPrice');
+        const maxPrice = document.getElementById('maxPrice');
+
+        minRange.oninput = function() {
+            minPrice.innerHTML = 'RM' + this.value;
+            if (parseInt(minRange.value) >= parseInt(maxRange.value)) {
+                maxRange.value = this.value;
+                maxPrice.innerHTML = 'RM' + maxRange.value;
+            }
+        };
+
+        maxRange.oninput = function() {
+            maxPrice.innerHTML = 'RM' + this.value + '+';
+            if (parseInt(maxRange.value) <= parseInt(minRange.value)) {
+                minRange.value = this.value;
+                minPrice.innerHTML = 'RM' + minRange.value;
+            }
+        };
+
+        // Show the filter modal
+        const filterIcon = document.querySelector('.filter-icon');
+        const filterContainer = document.querySelector('.filter-container');
+        const filterOverlay = document.querySelector('.filter-overlay');
+        const closeIcon = document.querySelector('.close-icon');
+
+        filterIcon.addEventListener('click', () => {
+            filterContainer.style.display = 'block';
+            filterOverlay.style.display = 'block';
+        });
+
+        closeIcon.addEventListener('click', () => {
+            filterContainer.style.display = 'none';
+            filterOverlay.style.display = 'none';
+        });
+
+        filterOverlay.addEventListener('click', () => {
+            filterContainer.style.display = 'none';
+            filterOverlay.style.display = 'none';
+        });
         // Function to initialize a slider
         function initializeSlider(slider) {
             const images = slider.querySelectorAll('img');

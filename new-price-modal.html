@@ -53,6 +53,20 @@
             }
         }
 
+        .category-select {
+            margin-bottom: 20px;
+        }
+
+        .category-select select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #162f4e;
+            background-color: #fff;
+        }
+
         .modal-content h2 {
             margin-bottom: 20px;
             font-size: 22px;
@@ -131,6 +145,14 @@
 <body>
     <div class="modal">
         <div class="modal-content">
+            <div class="category-select">
+                <select id="category">
+                    <option value="stroller">Stroller</option>
+                    <option value="car-seat">Car Seat</option>
+                    <option value="high-chair">High Chair</option>
+                </select>
+            </div>
+
             <h2>Price Range</h2>
             <p>Filter your price</p>
 
