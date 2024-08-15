@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .custom-shadow {
+        @apply shadow-lg;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<body class="bg-[#f4f9ff] font-poppins">
+    <div class="container mx-auto max-w-md pt-28 pb-16 px-4">
+
+        <!-- Header -->
+        <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-6 py-8 border-b">
+            <a href="new-product-showcase.html" class="text-xl m-3">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <h1 class="text-center flex-grow font-bold text-3xl">Shopping Cart</h1>
+        </header>
+
+        <!-- Cart Item 1 -->
+        <div class="checkbox-container flex items-center mt-6 space-x-4">
+            <input type="checkbox" id="checkbox1" class="form-checkbox h-4 w-4 cursor-pointer">
+            <div class="relative flex items-center bg-white p-4 rounded-3xl custom-shadow w-full">
+                <span class="absolute top-2 right-4 text-lg font-bold cursor-pointer transition-colors hover:text-red-500"
+                    onclick="showRemoveModal(this)">×</span>
+                <img src="assets/citi.jpeg" alt="Product Image" class="w-24 h-24 rounded-lg object-cover">
+                <div class="ml-4 flex-grow">
+                    <h3 class="text-sm mb-2 font-semibold">【Quinton】 Cozy Stroller</h3>
+                    <div class="mb-3">
+                        <select id="colorSelect1" class="p-1 border border-gray-300 rounded-lg w-full text-[13px]">
+                            <option value="black">Black</option>
+                            <option value="grey">Grey</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span id="totalPrice1" class="font-bold text-lg">RM 200</span>
+                        <div class="flex items-center ml-auto space-x-2 bg-[#f4f9ff]">
+                            <button id="decreaseQty1" class="bg-[#162f4e] text-white p-2 rounded">-</button>
+                            <input type="number" id="quantityInput1" class="text-center w-10 bg-transparent border-none" value="1" min="1">
+                            <button id="increaseQty1" class="bg-[#162f4e] text-white p-2 rounded">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Item 2 -->
+        <div class="checkbox-container flex items-center mt-6 space-x-4">
+            <input type="checkbox" id="checkbox2" class="form-checkbox h-4 w-4 cursor-pointer">
+            <div class="relative flex items-center bg-white p-4 rounded-3xl custom-shadow w-full">
+                <span class="absolute top-2 right-4 text-lg font-bold cursor-pointer transition-colors hover:text-red-500"
+                    onclick="showRemoveModal(this)">×</span>
+                <img src="assets/citi.jpeg" alt="Product Image" class="w-24 h-24 rounded-lg object-cover">
+                <div class="ml-4 flex-grow">
+                    <h3 class="text-sm mb-2 font-semibold">【Quinton】 Cozy Stroller</h3>
+                    <div class="mb-3">
+                        <select id="colorSelect2" class="p-1 border border-gray-300 rounded-lg w-full text-[13px]">
+                            <option value="black">Black</option>
+                            <option value="grey">Grey</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span id="totalPrice2" class="font-bold text-lg">RM 200</span>
+                        <div class="flex items-center ml-auto space-x-2 bg-[#f4f9ff]">
+                            <button id="decreaseQty2" class="bg-[#162f4e] text-white p-2 rounded">-</button>
+                            <input type="number" id="quantityInput2" class="text-center w-10 bg-transparent border-none" value="1" min="1">
+                            <button id="increaseQty2" class="bg-[#162f4e] text-white p-2 rounded">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div
+            class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-[#162f4e] text-white p-5 rounded-[20px] shadow-lg w-11/12 flex justify-between items-center">
+            <h3 class="text-xl font-semibold">Total: <span id="grandTotal">RM 400</span></h3>
+            <button class="bg-white text-[#162f4e] font-bold py-3 px-6 rounded-[30px] transition-colors hover:bg-blue-100"
+                onclick="location.href='new-checkout.html'">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Remove Product Modal -->
+    <div id="removeProductModal"
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+        <div class="bg-white p-8 rounded-[30px] text-center w-[400px]">
+            <i class="fas fa-times-circle text-red-500 text-3xl mb-4"></i>
+            <h2 class="text-xl font-semibold mb-4">Remove Product?</h2>
+            <p class="mb-6">Are you sure you want to remove this item from your cart?</p>
+            <div class="space-y-4">
+                <button class="bg-red-500 text-white py-2 px-4 rounded-full w-full"
+                    onclick="confirmRemove()">Yes</button>
+                <button class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full w-full"
+                    onclick="cancelRemove()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let itemToRemove;
+
+        function showRemoveModal(element) {
+            itemToRemove = element.closest('.checkbox-container');
+            document.getElementById('removeProductModal').style.display = 'flex';
+        }
+
+        function confirmRemove() {
+            if (itemToRemove) {
+                itemToRemove.remove();
+                updateGrandTotal();
+            }
+            closeModal();
+        }
+
+        function cancelRemove() {
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('removeProductModal').style.display = 'none';
+        }
+
+        // Quantity and total price logic for Item 1
+        const checkbox1 = document.getElementById('checkbox1');
+        const decreaseQty1 = document.getElementById('decreaseQty1');
+        const increaseQty1 = document.getElementById('increaseQty1');
+        const quantityInput1 = document.getElementById('quantityInput1');
+        const totalPrice1 = document.getElementById('totalPrice1');
+        let unitPrice1 = 200;
+
+        checkbox1.addEventListener('change', updateGrandTotal);
+        decreaseQty1.addEventListener('click', () => {
+            if (quantityInput1.value > 1) {
+                quantityInput1.value--;
+                updatePrice1();
+            }
+        });
+
+        increaseQty1.addEventListener('click', () => {
+            quantityInput1.value++;
+            updatePrice1();
+        });
+
+        quantityInput1.addEventListener('input', updatePrice1);
+
+        function updatePrice1() {
+            if (checkbox1.checked) {
+                let quantity1 = quantityInput1.value;
+                let price1 = 'RM ' + unitPrice1 * quantity1;
+                totalPrice1.textContent = price1;
+                updateGrandTotal();
+            }
+        }
+
+        function updateGrandTotal() {
+            let total1 = checkbox1.checked ? unitPrice1 * quantityInput1.value : 0;
+            let total2 = checkbox2.checked ? unitPrice2 * quantityInput2.value : 0;
+            let grandTotalAmount = total1 + total2;
+            document.getElementById('grandTotal').textContent = 'RM ' + grandTotalAmount;
+        }
+
+        // Quantity and total price logic for Item 2
+        const checkbox2 = document.getElementById('checkbox2');
+        const decreaseQty2 = document.getElementById('decreaseQty2');
+        const increaseQty2 = document.getElementById('increaseQty2');
+        const quantityInput2 = document.getElementById('quantityInput2');
+        const totalPrice2 = document.getElementById('totalPrice2');
+        let unitPrice2 = 200;
+
+        checkbox2.addEventListener('change', updateGrandTotal);
+        decreaseQty2.addEventListener('click', () => {
+            if (quantityInput2.value > 1) {
+                quantityInput2.value--;
+                updatePrice2();
+            }
+        });
+
+        increaseQty2.addEventListener('click', () => {
+            quantityInput2.value++;
+            updatePrice2();
+        });
+
+        quantityInput2.addEventListener('input', updatePrice2);
+
+        function updatePrice2() {
+            if (checkbox2.checked) {
+                let quantity2 = quantityInput2.value;
+                let price2 = 'RM ' + unitPrice2 * quantity2;
+                totalPrice2.textContent = price2;
+                updateGrandTotal();
+            }
+        }
+    </script>
+</body>
+
+</html>

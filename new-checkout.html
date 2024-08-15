@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
     <style>
         body {
             margin: 0;
@@ -21,7 +23,7 @@
             margin: 20px;
             padding: 20px;
             background-color: #fff;
-            border-radius: 15px;
+            border-radius: 30px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
@@ -30,44 +32,47 @@
             color: #162f4e;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .form-group {
+            width: 100%;
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
+            text-align: left;
         }
 
         .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
+        .form-group select,
         .form-group textarea {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            height: 100px;
+            border-radius: 15px;
+            font-size: 15px;
         }
 
         .summary {
+            width: 90%;
             margin-top: 20px;
             padding: 15px;
             background-color: #eaf2f8;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         .summary h2 {
             margin-top: 0;
             color: #162f4e;
+            text-align: center;
         }
 
         .summary-item {
@@ -82,6 +87,8 @@
         }
 
         .summary-total {
+            display: flex;
+            justify-content: space-between;
             font-weight: bold;
             font-size: 18px;
             color: #162f4e;
@@ -97,7 +104,8 @@
             font-size: 18px;
             border-radius: 30px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 50px;
+            margin-bottom: 20px;
             transition: background-color 0.3s ease;
         }
 
@@ -155,7 +163,8 @@
                     <span>RM 20</span>
                 </div>
                 <div class="summary-total">
-                    Total: RM 320
+                    <span>Total:</span>
+                    <span>RM 320</span>
                 </div>
             </div>
 

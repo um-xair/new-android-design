@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body class="font-poppins bg-[#f4f9ff] text-[#333] m-0 p-0">
+
+    <div class="container mx-auto p-6 max-w-2xl bg-[#f4f9ff]">
+        <!-- Image Slider -->
+        <div class="relative overflow-hidden rounded-[30px]">
+            <div class="flex transition-transform duration-500 slider">
+                <img src="assets/maplephoto.jpg" alt="Property Image" class="min-w-full rounded-[30px]">
+                <img src="assets/Maple car seat lifestyle.webp" alt="Property Image" class="min-w-full rounded-[30px]">
+                <img src="assets/profile.jpg" alt="Property Image" class="min-w-full rounded-[30px]">
+            </div>
+
+            <a href="new-product-showcase.html" class="absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div class="absolute top-4 right-16 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
+                <i class="fas fa-share-alt"></i>
+            </div>
+            <div class="absolute top-4 right-4 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-[#ffffffb3] w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md z-10">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="absolute bottom-4 right-16 bg-[#ffffffb3] w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md z-10">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <!-- Property Details -->
+        <div class="mt-5">
+            <div class="text-2xl font-semibold text-[#162f4e]">
+                【Quinton】 Maple 360 Car Seat
+            </div>
+            <div class="text-sm text-gray-600 mt-1 ml-2">
+                Quinton Maple 360 Baby Car Seat Newborn to 12 Years Old with ISOFIX | R129
+            </div>
+            <div class="flex items-center mt-2 ml-2">
+                <i class="fas fa-star text-[#f39c12] mr-1"></i>
+                <span class="text-sm text-gray-600">4.79 · 19 reviews</span>
+            </div>
+        </div>
+
+        <!-- Notice -->
+        <div class="flex items-center bg-[#162f4e] p-4 rounded-lg mt-5">
+            <i class="fas fa-gem text-white text-xl mr-2"></i>
+            <span class="text-white text-sm">This is a rare find - Maple 360 are the latest car seat from Quinton</span>
+        </div>
+
+        <!-- Host Info Icons -->
+        <div class="mt-5 p-5 border border-[#162f4e] shadow-md rounded-lg bg-white mb-52">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-shield text-[#162f4e] text-2xl mr-5"></i>
+                <div>
+                    <h4 class="text-lg font-semibold">Safety features</h4>
+                    <p class="text-sm text-gray-600">ISOFIX & support leg installation</p>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <i class="fas fa-feather text-[#162f4e] text-2xl mr-5"></i>
+                <div>
+                    <h4 class="text-lg font-semibold">Comfort and convenience</h4>
+                    <p class="text-sm text-gray-600">Biocurve seat design</p>
+                </div>
+            </div>
+            <div class="flex items-center mb-4">
+                <i class="fas fa-palette text-[#162f4e] text-2xl mr-5"></i>
+                <div>
+                    <h4 class="text-lg font-semibold">Design features</h4>
+                    <p class="text-sm text-gray-600">Fun shoulder straps with silicone paw prints</p>
+                </div>
+            </div>
+            <button class="bg-[#d1e6ff] text-black w-full py-3 rounded-[30px] font-semibold hover:bg-[#162f4e] hover:text-white transition-colors duration-300">
+                Read More
+            </button>
+        </div>
+
+        <!-- Price Reserve -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-11/12 flex justify-between items-center p-5 bg-[#162f4e] rounded-[20px] shadow-lg mb-5">
+            <div class="text-2xl font-semibold text-white">
+                RM 181
+            </div>
+            <button class="bg-white text-[#162f4e] font-semibold py-3 px-5 rounded-full text-lg cursor-pointer transition-colors duration-300 hover:bg-[#d1e6ff]">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Add to Cart Modal -->
+    <div id="addToCartModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-[30px] p-8 max-w-md w-full shadow-lg relative">
+            <div class="flex items-center mb-5">
+                <i class="fas fa-times text-2xl cursor-pointer close-icon absolute top-4 right-4"></i>
+                <h1 class="text-2xl text-center flex-1">Select Options</h1>
+            </div>
+
+            <div class="mb-5">
+                <h2 class="text-xl mb-2">Choose Variation</h2>
+                <div class="flex justify-around">
+                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
+                        <img src="assets/nior-1.png" alt="Red Color" class="w-15 h-15 rounded-full border-2 border-transparent">
+                        <div class="color-title text-sm text-[#162f4e] mt-2">Red</div>
+                    </div>
+                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
+                        <img src="assets/nior-2.png" alt="Blue Color" class="w-15 h-15 rounded-full border-2 border-transparent">
+                        <div class="color-title text-sm text-[#162f4e] mt-2">Blue</div>
+                    </div>
+                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
+                        <img src="assets/nior.png" alt="Green Color" class="w-15 h-15 rounded-full border-2 border-transparent">
+                        <div class="color-title text-sm text-[#162f4e] mt-2">Green</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h2 class="text-xl mb-2">Quantity</h2>
+                <div class="flex justify-between items-center bg-[#e5f1ff] rounded-xl overflow-hidden">
+                    <button id="decreaseQty" class="bg-[#162f4e] text-white px-4 py-2 text-xl">-</button>
+                    <input type="number" id="quantityInput" value="1" min="1" class="w-12 text-center text-xl border-none bg-[#e5f1ff]">
+                    <button id="increaseQty" class="bg-[#162f4e] text-white px-4 py-2 text-xl">+</button>
+                </div>
+            </div>
+
+            <div class="flex justify-between text-xl font-bold mb-5">
+                <h2>Total price</h2>
+                <span id="totalPrice">RM 100</span>
+            </div>
+
+            <button class="bg-[#162f4e] text-white w-full py-3 rounded-full text-lg cursor-pointer hover:bg-[#154d82] transition-colors duration-300">
+                Add to Cart
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
