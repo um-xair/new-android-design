@@ -5,142 +5,232 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom styles for modal */
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-container {
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+    </style>
 </head>
-<body class="font-poppins bg-[#f4f9ff] text-[#333] m-0 p-0">
+<body class="font-poppins bg-[#f4f9ff] text-[#333]">
 
-    <div class="container mx-auto p-6 max-w-2xl bg-[#f4f9ff]">
-        <!-- Image Slider -->
+    <div class="max-w-4xl mx-auto p-6 bg-[#f4f9ff]">
+
         <div class="relative overflow-hidden rounded-[30px]">
-            <div class="flex transition-transform duration-500 slider">
-                <img src="assets/maplephoto.jpg" alt="Property Image" class="min-w-full rounded-[30px]">
-                <img src="assets/Maple car seat lifestyle.webp" alt="Property Image" class="min-w-full rounded-[30px]">
-                <img src="assets/profile.jpg" alt="Property Image" class="min-w-full rounded-[30px]">
+            <div class="flex transition-transform duration-500 ease-in-out" id="slider">
+                <img class="min-w-full rounded-2xl" src="assets/maplephoto.jpg" alt="Property Image">
+                <img class="min-w-full rounded-2xl" src="assets/Maple car seat lifestyle.webp" alt="Property Image">
+                <img class="min-w-full rounded-2xl" src="assets/profile.jpg" alt="Property Image">
             </div>
-
-            <a href="new-product-showcase.html" class="absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
+            <a href="new-product-showcase.html" class="absolute top-4 left-4 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-left">
                 <i class="fas fa-chevron-left"></i>
             </a>
+            
             <div class="absolute top-4 right-16 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
                 <i class="fas fa-share-alt"></i>
             </div>
             <div class="absolute top-4 right-4 bg-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e]">
                 <i class="fas fa-heart"></i>
             </div>
-            <div class="absolute bottom-4 right-4 bg-[#ffffffb3] w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md z-10">
+            <div class="absolute bottom-4 right-14 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-left">
                 <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="absolute bottom-4 right-16 bg-[#ffffffb3] w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md z-10">
+            <div class="absolute bottom-4 right-4 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-right">
                 <i class="fas fa-chevron-right"></i>
             </div>
         </div>
 
-        <!-- Property Details -->
         <div class="mt-5">
-            <div class="text-2xl font-semibold text-[#162f4e]">
+            <div class="text-2xl font-bold">
                 【Quinton】 Maple 360 Car Seat
             </div>
-            <div class="text-sm text-gray-600 mt-1 ml-2">
+            <div class="text-sm text-gray-600 mt-1 ml-3">
                 Quinton Maple 360 Baby Car Seat Newborn to 12 Years Old with ISOFIX | R129
             </div>
-            <div class="flex items-center mt-2 ml-2">
-                <i class="fas fa-star text-[#f39c12] mr-1"></i>
+            <div class="flex items-center mt-2 ml-3">
+                <i class="fas fa-star text-yellow-500 mr-1"></i>
                 <span class="text-sm text-gray-600">4.79 · 19 reviews</span>
             </div>
         </div>
 
-        <!-- Notice -->
-        <div class="flex items-center bg-[#162f4e] p-4 rounded-lg mt-5">
-            <i class="fas fa-gem text-white text-xl mr-2"></i>
+        <div class="flex items-center bg-[#162f4e] p-4 rounded-[20px] mt-5">
+            <i class="fas fa-gem text-white text-lg mr-2"></i>
             <span class="text-white text-sm">This is a rare find - Maple 360 are the latest car seat from Quinton</span>
         </div>
 
-        <!-- Host Info Icons -->
-        <div class="mt-5 p-5 border border-[#162f4e] shadow-md rounded-lg bg-white mb-52">
+        <div class="bg-white border border-[#162f4e] shadow-md rounded-[20px] p-5 mt-5 mb-52">
             <div class="flex items-center mb-4">
                 <i class="fas fa-shield text-[#162f4e] text-2xl mr-5"></i>
                 <div>
-                    <h4 class="text-lg font-semibold">Safety features</h4>
+                    <h4 class="text-lg font-semibold">Safety Features</h4>
                     <p class="text-sm text-gray-600">ISOFIX & support leg installation</p>
                 </div>
             </div>
             <div class="flex items-center mb-4">
                 <i class="fas fa-feather text-[#162f4e] text-2xl mr-5"></i>
                 <div>
-                    <h4 class="text-lg font-semibold">Comfort and convenience</h4>
+                    <h4 class="text-lg font-semibold">Comfort and Convenience</h4>
                     <p class="text-sm text-gray-600">Biocurve seat design</p>
                 </div>
             </div>
             <div class="flex items-center mb-4">
                 <i class="fas fa-palette text-[#162f4e] text-2xl mr-5"></i>
                 <div>
-                    <h4 class="text-lg font-semibold">Design features</h4>
+                    <h4 class="text-lg font-semibold">Design Features</h4>
                     <p class="text-sm text-gray-600">Fun shoulder straps with silicone paw prints</p>
                 </div>
             </div>
-            <button class="bg-[#d1e6ff] text-black w-full py-3 rounded-[30px] font-semibold hover:bg-[#162f4e] hover:text-white transition-colors duration-300">
-                Read More
-            </button>
+            <button id="addToCartButton" class="w-full bg-[#d1e6ff] text-black py-3 px-6 rounded-full font-semibold transition-colors hover:bg-[#162f4e] hover:text-white">Read More</button>
         </div>
 
-        <!-- Price Reserve -->
-        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-11/12 flex justify-between items-center p-5 bg-[#162f4e] rounded-[20px] shadow-lg mb-5">
-            <div class="text-2xl font-semibold text-white">
+        <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-[#162f4e] text-white p-5 rounded-[20px] shadow-lg w-11/12 flex justify-between items-center">
+            <div class="text-white text-xl font-bold">
                 RM 181
             </div>
-            <button class="bg-white text-[#162f4e] font-semibold py-3 px-5 rounded-full text-lg cursor-pointer transition-colors duration-300 hover:bg-[#d1e6ff]">
-                Add to Cart
-            </button>
+            <button id="openModalButton" class="bg-white text-[#162f4e] font-bold py-3 px-6 rounded-[30px] transition-colors hover:bg-blue-100">Add to Cart</button>
         </div>
+
     </div>
 
     <!-- Add to Cart Modal -->
-    <div id="addToCartModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-[30px] p-8 max-w-md w-full shadow-lg relative">
+    <div id="addToCartModal" class="modal-container">
+        <div class="popup-container">
             <div class="flex items-center mb-5">
-                <i class="fas fa-times text-2xl cursor-pointer close-icon absolute top-4 right-4"></i>
-                <h1 class="text-2xl text-center flex-1">Select Options</h1>
+                <i class="fas fa-times close-icon text-2xl cursor-pointer"></i>
+                <h1 class="text-xl flex-1 text-center font-bold">Select Options</h1>
             </div>
 
             <div class="mb-5">
-                <h2 class="text-xl mb-2">Choose Variation</h2>
+                <h2 class="text-lg mb-2 font-bold">Choose Variation</h2>
                 <div class="flex justify-around">
-                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
-                        <img src="assets/nior-1.png" alt="Red Color" class="w-15 h-15 rounded-full border-2 border-transparent">
-                        <div class="color-title text-sm text-[#162f4e] mt-2">Red</div>
+                    <div class="text-center cursor-pointer p-2 hover:bg-[#f4f9ff]">
+                        <img class="w-15 h-15 rounded-full border-2 border-transparent" src="assets/nior-1.png" alt="Red Color">
+                        <div class="text-sm text-[#162f4e] mt-2">Red</div>
                     </div>
-                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
-                        <img src="assets/nior-2.png" alt="Blue Color" class="w-15 h-15 rounded-full border-2 border-transparent">
-                        <div class="color-title text-sm text-[#162f4e] mt-2">Blue</div>
+                    <div class="text-center cursor-pointer p-2 hover:bg-[#f4f9ff]">
+                        <img class="w-15 h-15 rounded-full border-2 border-transparent" src="assets/nior-2.png" alt="Blue Color">
+                        <div class="text-sm text-[#162f4e] mt-2">Blue</div>
                     </div>
-                    <div class="color-option text-center cursor-pointer p-2 rounded-md hover:bg-[#e5f1ff]">
-                        <img src="assets/nior.png" alt="Green Color" class="w-15 h-15 rounded-full border-2 border-transparent">
-                        <div class="color-title text-sm text-[#162f4e] mt-2">Green</div>
+                    <div class="text-center cursor-pointer p-2 hover:bg-[#f4f9ff]">
+                        <img class="w-15 h-15 rounded-full border-2 border-transparent" src="assets/nior.png" alt="Green Color">
+                        <div class="text-sm text-[#162f4e] mt-2">Green</div>
                     </div>
                 </div>
             </div>
 
             <div class="mb-5">
-                <h2 class="text-xl mb-2">Quantity</h2>
-                <div class="flex justify-between items-center bg-[#e5f1ff] rounded-xl overflow-hidden">
+                <h2 class="text-lg mb-2 font-bold">Quantity</h2>
+                <div class="flex overflow-hidden">
                     <button id="decreaseQty" class="bg-[#162f4e] text-white px-4 py-2 text-xl">-</button>
                     <input type="number" id="quantityInput" value="1" min="1" class="w-12 text-center text-xl border-none bg-[#e5f1ff]">
                     <button id="increaseQty" class="bg-[#162f4e] text-white px-4 py-2 text-xl">+</button>
                 </div>
             </div>
 
-            <div class="flex justify-between text-xl font-bold mb-5">
-                <h2>Total price</h2>
-                <span id="totalPrice">RM 100</span>
+            <div class="flex justify-between text-center mb-5 text-xl font-bold">
+                <h2 class="text-lg mb-2">Total price</h2>
+                <span id="totalPrice">RM 181</span>
             </div>
 
-            <button class="bg-[#162f4e] text-white w-full py-3 rounded-full text-lg cursor-pointer hover:bg-[#154d82] transition-colors duration-300">
-                Add to Cart
-            </button>
+            <a href="tailwind-shopping-cart.html">
+                <button class="w-full bg-[#162f4e] text-white py-3 px-6 rounded-[30px] text-lg">
+                    Add to Cart
+                </button>
+            </a>
+            
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // JavaScript for image slider
+            const slider = document.getElementById('slider');
+            let index = 0;
+
+            function showNextSlide() {
+                index = (index + 1) % slider.children.length;
+                slider.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            function showPreviousSlide() {
+                index = (index - 1 + slider.children.length) % slider.children.length;
+                slider.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+
+            document.querySelectorAll('.arrow-left').forEach(button => {
+                button.addEventListener('click', showPreviousSlide);
+            });
+
+            document.querySelectorAll('.arrow-right').forEach(button => {
+                button.addEventListener('click', showNextSlide);
+            });
+
+            // JavaScript for modal
+            const modal = document.getElementById('addToCartModal');
+            const closeModal = document.querySelector('.close-icon');
+            const openModalButton = document.getElementById('openModalButton');
+
+            openModalButton.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // JavaScript for quantity input
+            const quantityInput = document.getElementById('quantityInput');
+            const decreaseQty = document.getElementById('decreaseQty');
+            const increaseQty = document.getElementById('increaseQty');
+            const totalPrice = document.getElementById('totalPrice');
+
+            function updateTotalPrice() {
+                const pricePerItem = 181; // Example price
+                totalPrice.textContent = `RM ${pricePerItem * quantityInput.value}`;
+            }
+
+            decreaseQty.addEventListener('click', () => {
+                if (quantityInput.value > 1) {
+                    quantityInput.value--;
+                    updateTotalPrice();
+                }
+            });
+
+            increaseQty.addEventListener('click', () => {
+                quantityInput.value++;
+                updateTotalPrice();
+            });
+
+            quantityInput.addEventListener('change', updateTotalPrice);
+        });
+    </script>
+
 </body>
 </html>
