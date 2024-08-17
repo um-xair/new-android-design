@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family - Quinton</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body class="bg-[#e5f1ff] font-poppins">
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-8 py-6 h-[118px] border-b max-w-[600px] mx-auto">
+        <a href="tailwind-profile.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-bold flex-1 text-center">Family</h1>
+    </header>
+
+    <!-- Family Cards Section -->
+    <main class="pt-[118px] pb-8 px-4 mt-[30px]">
+        <div class="max-w-4xl mx-auto grid grid-cols-2 gap-4">
+            <!-- Example Family Card -->
+            <div class="bg-white rounded-3xl shadow-lg p-4 flex flex-col items-center">
+                <img src="assets/profile.jpg" alt="Family Member Photo" class="w-20 h-20 object-cover rounded-full mb-4">
+                <div class="text-center">
+                    <h3 class="text-lg font-semibold">Father</h3>
+                    <p class="text-gray-600">John Doe</p>
+                </div>
+            </div>
+            <!-- Repeat similar blocks for other family members -->
+
+            <!-- Add New Member Button -->
+            <div class="bg-white rounded-3xl shadow-lg p-4 flex flex-col items-center justify-center cursor-pointer" id="addMemberButton">
+                <div class="text-center">
+                    <i class="fa fa-plus text-3xl text-[#162f4e] mb-2"></i>
+                    <p class="text-[#162f4e] font-semibold">Add New Member</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Adding Family Member -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <h2 class="text-2xl font-semibold mb-4">Add New Family Member</h2>
+
+            <!-- Form fields for family role, photo, name, contact, and birthday -->
+            <form action="#" method="POST">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Family Role</label>
+                    <input type="text" name="role" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Family Photo</label>
+                    <input type="file" name="photo" class="mt-1 block w-full text-sm text-gray-900">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Family Name</label>
+                    <input type="text" name="name" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Family Contact</label>
+                    <input type="text" name="contact" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Family Birthday</label>
+                    <input type="date" name="birthday" class="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <button type="submit" class="bg-[#162f4e] text-white w-full py-2 rounded-[30px]">Save Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const addMemberButton = document.getElementById('addMemberButton');
+        const addMemberModal = document.getElementById('addMemberModal');
+
+        addMemberButton.addEventListener('click', function() {
+            addMemberModal.style.display = 'block';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == addMemberModal) {
+                addMemberModal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

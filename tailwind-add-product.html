@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Quinton</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#e5f1ff] font-poppins">
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-8 py-6 h-[118px] border-b max-w-[600px] mx-auto">
+        <a href="tailwind-profile.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-bold flex-1 text-center">Add Product</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-[118px] pb-8 px-4 mt-[30px]">
+        <div class="max-w-4xl mx-auto">
+            <!-- Add Product Button -->
+            <div class="text-center mb-6">
+                <a href="#select-product" class="bg-[#162f4e] text-white py-2 px-6 rounded-full inline-block">Add Product</a>
+            </div>
+
+            <!-- Product Selection Section -->
+            <section id="select-product" class="mb-8">
+                <h2 class="text-xl font-semibold mb-4">Select Product from Completed Orders</h2>
+                <select id="product-select" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    <option value="">-- Select a Product --</option>
+                    <option value="product1">Product 1</option>
+                    <option value="product2">Product 2</option>
+                    <option value="product3">Product 3</option>
+                </select>
+            </section>
+
+            <!-- Product Details Section -->
+            <section id="product-details" class="hidden">
+                <h2 class="text-xl font-semibold mb-4">Product Details</h2>
+                <div class="bg-white rounded-3xl shadow-lg p-6 mb-4">
+                    <h3 class="text-lg font-semibold mb-2">Product Name</h3>
+                    <p class="text-gray-700 mb-4">Description of the product...</p>
+                    <h4 class="text-md font-semibold mb-2">Specifications</h4>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Specification 1</li>
+                        <li>Specification 2</li>
+                        <li>Specification 3</li>
+                    </ul>
+                    <h4 class="text-md font-semibold mb-2">How to Use</h4>
+                    <div class="mb-4">
+                        <video controls class="w-full rounded-lg">
+                            <source src="path/to/how-to-use-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('product-select').addEventListener('change', function () {
+            var selectedValue = this.value;
+            var detailsSection = document.getElementById('product-details');
+            
+            if (selectedValue) {
+                // Here you can use AJAX to fetch the details based on the selected product
+                detailsSection.classList.remove('hidden');
+                
+                // For demonstration, you can populate with dummy data based on selectedValue
+                var productName = "";
+                var productDescription = "";
+                var specifications = [];
+                var videoPath = "";
+                
+                switch (selectedValue) {
+                    case 'product1':
+                        productName = "Product 1";
+                        productDescription = "Description of Product 1...";
+                        specifications = ["Specification 1", "Specification 2", "Specification 3"];
+                        videoPath = "path/to/product1-video.mp4";
+                        break;
+                    case 'product2':
+                        productName = "Product 2";
+                        productDescription = "Description of Product 2...";
+                        specifications = ["Specification A", "Specification B", "Specification C"];
+                        videoPath = "path/to/product2-video.mp4";
+                        break;
+                    case 'product3':
+                        productName = "Product 3";
+                        productDescription = "Description of Product 3...";
+                        specifications = ["Specification X", "Specification Y", "Specification Z"];
+                        videoPath = "path/to/product3-video.mp4";
+                        break;
+                }
+
+                document.querySelector('#product-details h3').textContent = productName;
+                document.querySelector('#product-details p').textContent = productDescription;
+                document.querySelector('#product-details ul').innerHTML = specifications.map(spec => `<li>${spec}</li>`).join('');
+                document.querySelector('#product-details video source').src = videoPath;
+                document.querySelector('#product-details video').load();
+            } else {
+                detailsSection.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
