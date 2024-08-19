@@ -13,6 +13,25 @@
     body {
         font-family: 'Poppins', sans-serif;
     }
+
+    .underline-custom {
+            position: relative;
+            color: #162f4e;
+        }
+        .underline-custom::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -7px; /* Distance between text and underline */
+            width: 100%;
+            height: 2px; /* Thickness of underline */
+            background-color: #162f4e;
+            transition: width 0.3s ease;
+        }
+        .underline-custom:hover::after,
+        .underline-custom.active::after {
+            width: 100%; /* Underline width on hover or active */
+        }
 </style>
 <body class="bg-[#e5f1ff] font-poppins">
 
@@ -21,11 +40,21 @@
         <a href="tailwind-profile.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
             <i class="fa fa-chevron-left"></i>
         </a>
-        <h1 class="text-2xl font-bold flex-1 text-center">Complete Order</h1>
+        <h1 class="text-2xl font-bold flex-1 text-center">My Purchased</h1>
     </header>
 
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 border-b max-w-[600px] mx-auto mt-[125px]">
+        <ul class="flex justify-around">
+            <li><a href="tailwind-to-pay.html" class="text-[#162f4e] font-medium hover:text-[#0f1d2b]">To Pay</a></li>
+            <li><a href="tailwind-to-ship.html" class="text-[#162f4e] font-medium hover:text-[#0f1d2b]">To Ship</a></li>
+            <li><a href="tailwind-to-received.html" class="text-[#162f4e] font-medium hover:text-[#0f1d2b] underline-custom">Completed</a></li>
+            <li><a href="tailwind-cancel.html" class="text-[#162f4e] font-medium hover:text-[#0f1d2b]">Cancel</a></li>
+        </ul>
+    </nav>
+
     <!-- Main Content -->
-    <main class="pt-[118px] pb-8 px-4 mt-[30px]">
+    <main class="pb-8 px-4 mt-4">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-3xl shadow-lg p-6">
                 <h2 class="text-2xl font-semibold mb-4">Received Products</h2>
@@ -33,25 +62,31 @@
                 <!-- List of Products with Pending Payment -->
                 <ul>
                     <!-- Example Product Item -->
-                    <li class="flex items-center justify-between py-4 border-b">
-                        <div class="flex items-center">
-                            <img src="assets/Maple car seat lifestyle.webp" alt="Product Image" class="w-[100px] h-[100px] object-cover rounded-[15px] mr-4">
-                            <div>
-                                <h3 class="text-sm font-semibold">【Quinton】 Maple 360 Car Seat</h3>
-                                <p class="text-sm text-gray-600 ml-2">Variation: Blue</p>
-                                <p class="text-gray-600 ml-2 mt-2">Price: $99.99</p>
+                    <a href="tailwind-order-complete.html" class="block">
+                        <li class="flex items-center justify-between py-4 cursor-pointer">
+                            <div class="flex items-center">
+                                <img src="assets/Maple car seat lifestyle.webp" alt="Product Image" class="w-[100px] h-[100px] object-cover rounded-[15px] mr-4">
+                                <div>
+                                    <h3 class="text-sm font-semibold">【Quinton】 Maple 360 Car Seat</h3>
+                                    <p class="text-sm text-gray-600 ml-2">Variation: Blue</p>
+                                    <p class="text-gray-600 ml-2 mt-2">Price: RM99.99</p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <!-- Add more product items as needed -->
+                        </li>
+                        <div class="bg-[#162f4e] text-white py-3 text-sm mb-6 rounded-xl">
+                            <div class="flex justify-between px-4">
+                                <span class="font-semibold">Order Total:</span>
+                                <span class="font-semibold">RM 99.99</span>
+                            </div>
+                        </div>                        
+                    </a>
+                    
                 </ul>
 
                 <!-- Buttons Below the List -->
-                <div class="flex justify-end space-x-2 mt-6">
-                    <button class="bg-white text-[#162f4e] py-2 px-6 rounded-md flex items-center border-2 border-[#162f4e]">
-                        <i class="fas fa-star text-xl mr-2"></i> <!-- Star Icon -->
-                        <span>Rate</span>
-                    </button>
+                <div class="flex space-x-2 mt-6">
+                    <button class="bg-white-500 py-2 px-6 rounded-md flex-1 border-2 border-[#162f4e]">Rate Now</button>
+                    <button class="bg-[#162f4e] text-white py-2 px-6 rounded-md flex-1">Buy Again</button>
                 </div>
             </div>
         </div>

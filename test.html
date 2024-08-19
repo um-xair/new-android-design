@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-[#162f4e]">
+
+    <!-- Tabs -->
+    <div class="flex justify-center bg-white py-4 shadow">
+        <button id="allTab" class="px-4 py-2 mx-2 border-b-2 border-[#162f4e]">All</button>
+        <button id="toPayTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Pay</button>
+        <button id="toShipTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Ship</button>
+        <button id="toReceiveTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Receive</button>
+    </div>
+
+    <!-- Content Container -->
+    <div id="contentContainer" class="p-6">
+        <!-- Content for each tab will be dynamically inserted here -->
+    </div>
+
+    <script>
+        const contentContainer = document.getElementById('contentContainer');
+
+        const orderTemplate = (order) => `
+            <div class="bg-white shadow-md rounded-lg mb-6 p-4">
+                <div class="flex justify-between items-center">
+                    <div class="text-gray-500">${order.orderNumber}</div>
+                    <div class="text-sm text-gray-600">${order.orderDate}</div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex">
+                        <img class="w-20 h-20 rounded-lg object-cover" src="${order.productImage}" alt="${order.productName}">
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold">${order.productName}</h3>
+                            <p class="text-gray-500">Quantity: ${order.quantity}</p>
+                            <p class="text-gray-500">Price: RM${order.price}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-end space-x-4">
+                    ${order.buttons.map(button => `<button class="px-4 py-2 ${button.class} rounded-lg">${button.text}</button>`).join('')}
+                </div>
+            </div>
+        `;
+
+        const toPayOrders = [
+            {
+                orderNumber: 'Order #12345',
+                orderDate: '12 Aug 2024',
+                productImage: 'https://via.placeholder.com/100',
+                productName: 'Product Name',
+                quantity: 1,
+                price: 100.00,
+                buttons: [
+                    { text: 'Pay Now', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
+                    { text: 'Cancel Order', class: 'bg-gray-200 text-[#162f4e] hover:bg-gray-300' }
+                ]
+            }
+        ];
+
+        const toShipOrders = [
+            {
+                orderNumber: 'Order #12346',
+                orderDate: '10 Aug 2024',
+                productImage: 'https://via.placeholder.com/100',
+                productName: 'Product Name 2',
+                quantity: 1,
+                price: 200.00,
+                buttons: [
+                    { text: 'Track Order', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
+                    { text: 'Contact Support', class: 'bg-gray-200 text-[#162f4e] hover:bg-gray-300' }
+                ]
+            }
+        ];
+
+        const toReceiveOrders = [
+            {
+                orderNumber: 'Order #12347',
+                orderDate: '08 Aug 2024',
+                productImage: 'https://via.placeholder.com/100',
+                productName: 'Product Name 3',
+                quantity: 2,
+                price: 150.00,
+                buttons: [
+                    { text: 'Track Order', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
+                    { text: 'Confirm Receipt', class: 'bg-green-500 text-white hover:bg-green-600' }
+                ]
+            }
+        ];
+
+        const allOrders = [...toPayOrders, ...toShipOrders, ...toReceiveOrders];
+
+        document.getElementById('allTab').addEventListener('click', () => {
+            contentContainer.innerHTML = allOrders.map(orderTemplate).join('');
+        });
+
+        document.getElementById('toPayTab').addEventListener('click', () => {
+            contentContainer.innerHTML = toPayOrders.map(orderTemplate).join('');
+        });
+
+        document.getElementById('toShipTab').addEventListener('click', () => {
+            contentContainer.innerHTML = toShipOrders.map(orderTemplate).join('');
+        });
+
+        document.getElementById('toReceiveTab').addEventListener('click', () => {
+            contentContainer.innerHTML = toReceiveOrders.map(orderTemplate).join('');
+        });
+
+        // Default to All Tab
+        document.getElementById('allTab').click();
+    </script>
+
+</body>
+
+</html>
