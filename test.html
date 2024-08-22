@@ -1,120 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Orders</title>
+    <title>Favorite Products - Quinton</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
+<body class="bg-[#e5f1ff] font-poppins">
 
-<body class="bg-gray-100 text-[#162f4e]">
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-8 py-6 h-[118px] border-b max-w-[600px] mx-auto">
+        <a href="tailwind-profile.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-bold flex-1 text-center">My Favorites</h1>
+    </header>
 
-    <!-- Tabs -->
-    <div class="flex justify-center bg-white py-4 shadow">
-        <button id="allTab" class="px-4 py-2 mx-2 border-b-2 border-[#162f4e]">All</button>
-        <button id="toPayTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Pay</button>
-        <button id="toShipTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Ship</button>
-        <button id="toReceiveTab" class="px-4 py-2 mx-2 border-b-2 border-transparent hover:border-[#162f4e]">To Receive</button>
-    </div>
-
-    <!-- Content Container -->
-    <div id="contentContainer" class="p-6">
-        <!-- Content for each tab will be dynamically inserted here -->
-    </div>
-
-    <script>
-        const contentContainer = document.getElementById('contentContainer');
-
-        const orderTemplate = (order) => `
-            <div class="bg-white shadow-md rounded-lg mb-6 p-4">
-                <div class="flex justify-between items-center">
-                    <div class="text-gray-500">${order.orderNumber}</div>
-                    <div class="text-sm text-gray-600">${order.orderDate}</div>
-                </div>
-                <div class="mt-4">
-                    <div class="flex">
-                        <img class="w-20 h-20 rounded-lg object-cover" src="${order.productImage}" alt="${order.productName}">
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold">${order.productName}</h3>
-                            <p class="text-gray-500">Quantity: ${order.quantity}</p>
-                            <p class="text-gray-500">Price: RM${order.price}</p>
+    <!-- Main Content -->
+    <main class="pb-8 px-4 mt-[150px]">
+        <div class="max-w-4xl mx-auto">
+            <!-- Favorite Products List -->
+            <div class="bg-white rounded-3xl shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4">Favorite Products</h2>
+                
+                <ul>
+                    <!-- Example Product Item -->
+                    <li class="flex items-center justify-between py-4 border-b cursor-pointer">
+                        <div class="flex items-center">
+                            <img src="assets/Maple car seat lifestyle.webp" alt="Product Image" class="w-[100px] h-[100px] object-cover rounded-[15px] mr-4">
+                            <div>
+                                <h3 class="text-sm font-semibold">【Quinton】 Maple 360 Car Seat</h3>
+                                <p class="text-gray-600 mt-2">RM 1,499.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="mt-4 flex justify-end space-x-4">
-                    ${order.buttons.map(button => `<button class="px-4 py-2 ${button.class} rounded-lg">${button.text}</button>`).join('')}
-                </div>
+                        <button class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-heart"></i> <!-- This icon indicates it's already liked -->
+                        </button>
+                    </li>
+                    
+                    <!-- Another Example Product Item -->
+                    <li class="flex items-center justify-between py-4 border-b cursor-pointer">
+                        <div class="flex items-center">
+                            <img src="assets/citi.jpeg" alt="Product Image" class="w-[100px] h-[100px] object-cover rounded-[15px] mr-4">
+                            <div>
+                                <h3 class="text-sm font-semibold">【Quinton】 Flexi Car Seat</h3>
+                                <p class="text-gray-600 mt-2">RM 1,299.00</p>
+                            </div>
+                        </div>
+                        <button class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </li>
+
+                    <!-- Additional Product Items Here -->
+                </ul>
             </div>
-        `;
-
-        const toPayOrders = [
-            {
-                orderNumber: 'Order #12345',
-                orderDate: '12 Aug 2024',
-                productImage: 'https://via.placeholder.com/100',
-                productName: 'Product Name',
-                quantity: 1,
-                price: 100.00,
-                buttons: [
-                    { text: 'Pay Now', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
-                    { text: 'Cancel Order', class: 'bg-gray-200 text-[#162f4e] hover:bg-gray-300' }
-                ]
-            }
-        ];
-
-        const toShipOrders = [
-            {
-                orderNumber: 'Order #12346',
-                orderDate: '10 Aug 2024',
-                productImage: 'https://via.placeholder.com/100',
-                productName: 'Product Name 2',
-                quantity: 1,
-                price: 200.00,
-                buttons: [
-                    { text: 'Track Order', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
-                    { text: 'Contact Support', class: 'bg-gray-200 text-[#162f4e] hover:bg-gray-300' }
-                ]
-            }
-        ];
-
-        const toReceiveOrders = [
-            {
-                orderNumber: 'Order #12347',
-                orderDate: '08 Aug 2024',
-                productImage: 'https://via.placeholder.com/100',
-                productName: 'Product Name 3',
-                quantity: 2,
-                price: 150.00,
-                buttons: [
-                    { text: 'Track Order', class: 'bg-[#162f4e] text-white hover:bg-[#0b1e35]' },
-                    { text: 'Confirm Receipt', class: 'bg-green-500 text-white hover:bg-green-600' }
-                ]
-            }
-        ];
-
-        const allOrders = [...toPayOrders, ...toShipOrders, ...toReceiveOrders];
-
-        document.getElementById('allTab').addEventListener('click', () => {
-            contentContainer.innerHTML = allOrders.map(orderTemplate).join('');
-        });
-
-        document.getElementById('toPayTab').addEventListener('click', () => {
-            contentContainer.innerHTML = toPayOrders.map(orderTemplate).join('');
-        });
-
-        document.getElementById('toShipTab').addEventListener('click', () => {
-            contentContainer.innerHTML = toShipOrders.map(orderTemplate).join('');
-        });
-
-        document.getElementById('toReceiveTab').addEventListener('click', () => {
-            contentContainer.innerHTML = toReceiveOrders.map(orderTemplate).join('');
-        });
-
-        // Default to All Tab
-        document.getElementById('allTab').click();
-    </script>
+        </div>
+    </main>
 
 </body>
-
 </html>
