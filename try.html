@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success Modal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body{
+    font-family: 'Poppins', sans-serif;
+}
+</style>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen font-poppins">
+
+    <div class="modal-content relative p-6 bg-white rounded-3xl shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Family Member Details</h2>
+        
+        <button class="absolute -top-2 -right-2 text-[#fff] text-2xl bg-red-500 rounded-full px-2" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+    
+        <div class="flex flex-col items-center">
+            <img id="modalPhoto" src="../uploads/jinx-league-of-legends-arcane-vi-league-of-legends-caitlyn-league-of-legends-hd-wallpaper-thumb.jpg" alt="Family Member Photo" class="w-24 h-24 object-cover rounded-full mb-4">
+            <div class="text-center">
+                <h3 id="modalRole" class="text-lg font-semibold">qqq</h3>
+                <p id="modalName" class="text-gray-600">q</p>
+                <p id="modalContact" class="text-gray-600">q</p>
+                <p id="modalBirthday" class="text-gray-600">0000-00-00</p>
+            </div>
+        </div>
+    
+        <!-- Full-width Edit Button -->
+        <div class="mt-6">
+            <button class="bg-[#162f4e] text-white py-3 px-6 w-full rounded-[30px] flex items-center justify-center">
+                <i class="fas fa-pencil-alt mr-2"></i> Edit
+            </button>
+        </div>
+    </div>
+    
+
+</body>
+</html>

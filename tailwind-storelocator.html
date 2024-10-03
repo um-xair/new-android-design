@@ -15,17 +15,15 @@
 <body class="bg-blue-100 min-h-screen py-10">
     <div class="container max-w-6xl mx-auto px-5">
         
-<style>
-
-    .price-slider {
-        -webkit-appearance: none;
+    <style>
+        .price-slider {
+            -webkit-appearance: none;
             width: 100%;
             height: 8px;
             background: #ddd;
             outline: none;
             border-radius: 5px;
         }
-
         .price-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -35,174 +33,284 @@
             border-radius: 50%;
             cursor: pointer;
         }
-
         .price-slider::-moz-range-thumb {
             width: 24px;
             height: 24px;
             background: #162f4e; /* Color for the thumb */
             cursor: pointer;
         }
-</style>
-<header class="flex items-center px-12 py-10 border-b border-gray-300 bg-white fixed inset-x-0 top-0 z-80 mb-2">
-    <button class="back-button bg-transparent border-none text-lg cursor-pointer mr-2" onclick="goBack()">
-        <i class="fa fa-chevron-left"></i>
-    </button>
-            <h1 class="flex-grow font-bold text-center text-2xl">Store Locator</h1>
-</header>
+        #district {
+        visibility: visible; 
+        opacity: 1; 
+        pointer-events: auto; 
+    }
+    #map { 
+        height: 500px; 
+        width: 100%; 
+        margin-top: 70px; 
+        position: relative;
+        z-index: -1; 
+    } 
+        .gm-style-iw { 
+            font-family: 'Poppins', sans-serif; 
+        }
+        .price-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            outline: none;
+            border-radius: 5px;
+        }
+    
+        
+    </style>
 
-        <div class="bg-white p-5 rounded-lg shadow-lg mb-5 mt-20">
-            <label for="state" class="block font-semibold mb-2">Select State:</label>
-            <select id="state" class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
-                <option value="">--Select State--</option>
-                <!-- Options will be populated dynamically -->
-            </select>
+    <header class="flex items-center px-12 py-10 border-b border-gray-300 bg-white fixed inset-x-0 top-0 z-80 mb-2">
+        <button class="back-button bg-transparent border-none text-lg cursor-pointer mr-2" onclick="goBack()">
+            <i class="fa fa-chevron-left"></i>
+        </button>
+        <h1 class="flex-grow font-bold text-center text-2xl">Store Locator</h1>
+    </header>
 
-            <label for="district" class="block font-semibold mb-2">Select District:</label>
-            <select id="district" class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
-                <option value="">--Select District--</option>
-                <!-- Options will be populated dynamically -->
-            </select>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
 
-            <label for="search" class="block font-semibold mb-2">Search Store:</label>
-            <input type="text" id="search" placeholder="Enter store name..." class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
+        const filterIcon = document.querySelector('.filter-btn');
+        const filterContainer = document.querySelector('.filter-container');
+        const filterOverlay = document.querySelector('.filter-overlay');
+        const closeIcon = document.querySelector('.close-icon');
 
-            <button id="searchBtn" class="w-full p-3 bg-blue-900 text-white rounded-full hover:bg-blue-700 transition-colors duration-300">Search</button>
-        </div>
+        if (filterIcon) {
+            filterIcon.addEventListener('click', () => {
+                filterContainer.classList.remove('hidden');
+                filterOverlay.classList.remove('hidden');
+            });
+        }
 
-        <div id="map" class="w-full h-96 bg-gray-300 rounded-lg mb-5"></div>
+        if (closeIcon) {
+            closeIcon.addEventListener('click', () => {
+                filterContainer.classList.add('hidden');
+                filterOverlay.classList.add('hidden');
+            });
+        }
 
-        <div id="store-container" class="flex flex-col gap-5">
-            <!-- Store results will be populated dynamically -->
-        </div>
+        if (filterOverlay) {
+            filterOverlay.addEventListener('click', () => {
+                filterContainer.classList.add('hidden');
+                filterOverlay.classList.add('hidden');
+            });
+        }
+
+        function initializeSlider(slider) {
+            const images = slider.querySelectorAll('img');
+            const totalImages = images.length;
+            let currentIndex = 0;
+
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateSlider();
+            }
+
+            function showPreviousImage() {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateSlider();
+            }
+
+            function updateSlider() {
+                const offset = -currentIndex * 100;
+                slider.style.transform = translateX(${offset}%);
+            }
+
+            const leftArrow = slider.parentElement.querySelector('.left-arrow');
+            const rightArrow = slider.parentElement.querySelector('.right-arrow');
+
+            if (leftArrow) {
+                leftArrow.addEventListener('click', showPreviousImage);
+            }
+
+            if (rightArrow) {
+                rightArrow.addEventListener('click', showNextImage);
+            }
+
+            setInterval(showNextImage, 5000);
+        }
+
+        document.querySelectorAll('.slider').forEach(initializeSlider);
+
+        const minRange = document.getElementById('minRange');
+        const maxRange = document.getElementById('maxRange');
+        const minPrice = document.getElementById('minPrice');
+        const maxPrice = document.getElementById('maxPrice');
+
+        function updatePriceDisplay() {
+            minPrice.textContent = RM${minRange.value};
+            maxPrice.textContent = RM${maxRange.value};
+        }
+
+        updatePriceDisplay();
+
+        minRange.addEventListener('input', updatePriceDisplay);
+        maxRange.addEventListener('input', updatePriceDisplay);
+    </script>
+
+    <div class="bg-white p-5 rounded-lg shadow-lg mb-5 mt-20">
+        <label for="state" class="block font-semibold mb-2">Select State:</label>
+        <select id="state" class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
+            <option value="">--Select State--</option>
+            <!-- Options will be populated dynamically -->
+        </select>
+
+        <label for="district" class="block font-semibold mb-2">Select District:</label>
+        <select id="district" class="w-full p-3 mb-4 border border-gray-300 rounded-lg" disabled>
+            <option value="">--Select District--</option>
+            <!-- Options will be populated dynamically -->
+        </select>
+
+        <label for="search" class="block font-semibold mb-2">Search Store:</label>
+        <input type="text" id="search" placeholder="Enter store name..." class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
+
+        <button id="searchBtn" class="w-full p-3 bg-blue-900 text-white rounded-full hover:bg-blue-700 transition-colors duration-300">Search</button>
+    </div>
+
+    <div id="map" class="w-full h-96 bg-gray-300 rounded-lg mb-5"></div>
+
+    <div id="store-container" class="flex flex-col gap-5">
+        <!-- Store results will be populated dynamically -->
+    </div>
+
+    <div class="bg-white p-5 rounded-lg shadow-lg mb-5 mt-20">
+        <label for="state" class="block font-semibold mb-2">Select State:</label>
+        <select id="state" class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
+            <option value="">--Select State--</option>
+            <!-- Options will be populated dynamically -->
+        </select>
+
+        <label for="district" class="block font-semibold mb-2">Select District:</label>
+        <select id="district" class="w-full p-3 mb-4 border border-gray-300 rounded-lg" disabled>
+            <option value="">--Select District--</option>
+            <!-- Options will be populated dynamically -->
+        </select>
+
+        <label for="search" class="block font-semibold mb-2">Search Store:</label>
+        <input type="text" id="search" placeholder="Enter store name..." class="w-full p-3 mb-4 border border-gray-300 rounded-lg">
+
+        <button id="searchBtn" class="w-full p-3 bg-blue-900 text-white rounded-full hover:bg-blue-700 transition-colors duration-300">Search</button>
     </div>
 
     <script>
-    let map;
-    const markers = [];
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 3.1390, lng: 101.6869 }, // Kuala Lumpur
-            zoom: 10,
-            styles: [
-                {
-                    featureType: "poi",
-                    stylers: [{ visibility: "off" }] // Hide points of interest by default
-                }
-            ]
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const fetchStates = () => {
-            fetch('ajax_app_handling.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ action: 'getStates' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const stateSelect = document.getElementById('state');
-                data.data.forEach(state => {
-                    const option = document.createElement('option');
-                    option.value = state.state;
-                    option.textContent = state.state;
-                    stateSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Error fetching states:', error));
+        let map;
+        const markers = [];
+        const storeData = {
+            johor: {
+                johor_bahru_ulu_tiram: [
+                    {lat: 1.5447444806203974, lng: 103.77255911483483, name: 'Little Genius (Tebrau)', address: 'Johor Bahru, Johor', photo: 'assets/Little-Genius-(Tebrau).png'},
+                    {lat: 1.552259247971418, lng: 103.7474106101468, name: 'Fabbie Baby Mart (Adda Height)', address: 'Johor Bahru, Johor', photo: 'assets/'},
+                    {lat: 1.6232353607152494, lng: 103.823024915012, name: 'Fabbie Baby Mart (Ulu Tiram)', address: 'Ulu Tiram, Johor', photo: 'assets/'},
+                    {lat: 1.5529450449858508, lng: 103.78741855563818, name: 'Baby Phoebe @ Taman Mount Austin', address: 'Johor Bahru, Johor', photo: 'assets/Baby-Phoebe-@-Taman-Mount-Austin.png'},
+                    {lat: 1.6779172956401198, lng: 103.77219221061624, name: 'BabyGro', address: 'Johor Bahru, Johor', photo: 'assets/'},
+                    {lat: 1.489697383889242, lng: 103.77482272374007, name: 'Otaki Baby Centre', address: 'Johor Bahru, Johor', photo: 'assets/Otaki-Baby-Centre.png'},
+                    {lat: 1.5571831371339262, lng: 103.78410721016064, name: 'Baby Parenting Hub', address: 'Johor Bahru, Johor', photo: 'assets/Baby-Parenting-Hub.png'},
+                    {lat: 1.5631187150555785, lng: 103.78871242389843, name: 'Mini Me', address: 'Johor Bahru, Johor', photo: 'assets/Mini-Me.png'},
+                    {lat: 1.6056881962731742, lng: 103.7235773739926, name: 'B.M.H', address: 'Johor Bahru, Johor', photo: 'assets/BMH.png'},
+                    {lat: 1.5507088562414955, lng: 103.76513172386885, name: 'Kiddos', address: 'Johor Bahru, Johor', photo: 'assets/Kiddos.png'},
+                ]
+            }
         };
 
-        const fetchDistricts = (state) => {
-            fetch('ajax_app_handling.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ action: 'getDistricts', state: state })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const districtSelect = document.getElementById('district');
-                districtSelect.innerHTML = '<option value="">--Select District--</option>';
-                data.data.forEach(district => {
-                    const option = document.createElement('option');
-                    option.value = district.district;
-                    option.textContent = district.district;
-                    districtSelect.appendChild(option);
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 1.552259247971418, lng: 103.7474106101468 },
+                zoom: 12,
+                styles: [
+                    {
+                        featureType: "poi",
+                        stylers: [{ visibility: "off" }]
+                    }
+                ]
+            });
+        }
+
+        function updateMarkers(state, district) {
+            markers.forEach(marker => marker.setMap(null)); // Remove existing markers
+            markers.length = 0; // Clear markers array
+
+            const storeList = state && district && storeData[state] && storeData[state][district] || [];
+
+            storeList.forEach(store => {
+                const marker = new google.maps.Marker({
+                    position: { lat: store.lat, lng: store.lng },
+                    map: map,
+                    title: store.name,
                 });
-                districtSelect.disabled = false;
-            })
-            .catch(error => console.error('Error fetching districts:', error));
-        };
 
-        const fetchStores = () => {
-            const search = document.getElementById('search').value;
-            const district = document.getElementById('district').value;
-
-            fetch('ajax_app_handling.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ action: 'getStores', search: search, district: district })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const storeContainer = document.getElementById('store-container');
-                storeContainer.innerHTML = ''; // Clear previous results
-
-                // Clear previous markers
-                markers.forEach(marker => marker.setMap(null));
-                markers.length = 0;
-
-                const bounds = new google.maps.LatLngBounds();
-
-                data.data.forEach(store => {
-                    const storeElement = document.createElement('div');
-                    storeElement.className = 'bg-white p-5 flex items-center rounded-lg shadow-lg';
-                    storeElement.innerHTML = `
-                        <img src="${store.store_image}" alt="Store Image" class="w-36 h-36 rounded-lg mr-5">
-                        <div class="flex-1">
-                            <h2 class="text-lg font-semibold text-gray-800 mb-2">${store.name}</h2>
-                            <p class="text-gray-600 text-sm mb-4">${store.address}</p>
-                            <button class="bg-blue-900 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">Get Directions</button>
+                marker.addListener('click', () => {
+                    const content = `
+                        <div style="font-family: 'Poppins', sans-serif;">
+                            <img src="${store.photo}" alt="${store.name}" style="width: 150px; height: 100px; object-fit: cover;">
+                            <h3>${store.name}</h3>
+                            <p>${store.address}</p>
+                            <button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${store.lat},${store.lng}', '_blank')" class="bg-blue-900 text-white p-2 rounded-lg">Get Directions</button>
                         </div>
                     `;
-                    storeContainer.appendChild(storeElement);
-
-                    const position = { lat: parseFloat(store.latitude), lng: parseFloat(store.longitude) };
-                    const marker = new google.maps.Marker({
-                        position: position,
-                        map: map,
-                        title: store.name
-                    });
-
-                    markers.push(marker);
-
                     const infoWindow = new google.maps.InfoWindow({
-                        content: <strong>${store.name}</strong><br>${store.address}
+                        content: content
                     });
-
-                    marker.addListener('click', () => {
-                        infoWindow.open(map, marker);
-                    });
-
-                    bounds.extend(position);
+                    infoWindow.open(map, marker);
                 });
 
-                // Adjust the map to fit all markers
-                if (data.data.length) {
-                    map.fitBounds(bounds);
-                }
-            })
-            .catch(error => console.error('Error fetching stores:', error));
-        };
+                markers.push(marker);
+            });
 
-        document.getElementById('state').addEventListener('change', (e) => {
-            fetchDistricts(e.target.value);
+            if (storeList.length) {
+                const bounds = new google.maps.LatLngBounds();
+                storeList.forEach(store => {
+                    bounds.extend(new google.maps.LatLng(store.lat, store.lng));
+                });
+                map.fitBounds(bounds);
+            }
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            updateMarkers(state, district);
         });
 
-        document.getElementById('searchBtn').addEventListener('click', fetchStores);
+        // Populate state and district dropdowns dynamically (example implementation)
+        document.addEventListener('DOMContentLoaded', () => {
+            const stateSelect = document.getElementById('state');
+            const districtSelect = document.getElementById('district');
 
-        fetchStates(); // Initialize states on page load
-    });
+            // Example state options
+            const states = ['johor'];
+            states.forEach(state => {
+                const option = document.createElement('option');
+                option.value = state;
+                option.textContent = state.charAt(0).toUpperCase() + state.slice(1);
+                stateSelect.appendChild(option);
+            });
+
+            stateSelect.addEventListener('change', () => {
+                const state = stateSelect.value;
+                districtSelect.innerHTML = '<option value="">--Select District--</option>';
+                if (state && storeData[state]) {
+                    Object.keys(storeData[state]).forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district.replace(/_/g, ' ').toUpperCase();
+                        districtSelect.appendChild(option);
+                    });
+                    districtSelect.disabled = false;
+                } else {
+                    districtSelect.disabled = true;
+                }
+            });
+        });
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANfUHc27kQ5YhPOxLQO9AKG8m-OmvV7Nk&callback=initMap" async defer></script></body>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANfUHc27kQ5YhPOxLQO9AKG8m-OmvV7Nk&callback=initMap" async defer></script>
+</body>
 </html>

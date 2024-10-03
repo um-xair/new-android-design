@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+<body class="bg-[#e5f1ff] font-poppins flex items-center justify-center min-h-screen">
+
+     <!-- Header -->
+     <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-8 py-6 h-[118px] border-b max-w-[600px] mx-auto">
+        <a href="tailwind-collection.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-bold flex-1 text-center">Add Collection</h1>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="px-6 max-w-[600px] w-full">
+        <!-- Introduction Section -->
+        <section class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-[#162f4e] mb-4">Ready to Add Your Favourite Collection Here?</h2>
+            <p class="text-sm text-gray-600 mb-6">Unlock new features by uploading your receipt and get access to your product collection.</p>
+        </section>
+
+        <!-- Upload Receipt Section -->
+        <section class="bg-white shadow-lg rounded-[30px] p-6 text-center mx-auto w-4/5 h-80 flex flex-col items-center justify-center">
+            <!-- Camera Icon -->
+            <div class="w-20 h-20 flex items-center justify-center bg-gray-200 text-[#162f4e] rounded-[15px] mb-4">
+                <i class="fas fa-camera text-4xl"></i>
+            </div>
+            <!-- Image Placeholder -->
+            <img src="" alt="Upload Receipt" class="w-full h-64 object-cover rounded-lg mb-4 hidden" id="uploaded-image">
+            <p class="text-sm text-gray-600 mb-6">Upload your receipt</p>
+            <label for="upload-receipt" class="cursor-pointer inline-block bg-[#162f4e] text-white font-semibold py-3 px-6 rounded-[30px]">
+                <i class="fa fa-upload mr-2"></i> Upload Receipt
+            </label>
+            <input type="file" id="upload-receipt" class="hidden" accept="image/*">
+        </section>
+    </main>
+
+    <script>
+        // JavaScript to handle the receipt upload
+        const uploadInput = document.getElementById('upload-receipt');
+        const uploadImage = document.getElementById('uploaded-image');
+
+        uploadInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadImage.src = e.target.result;
+                    uploadImage.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom styles for modal */
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-container {
+            background-color: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+    </style>
+</head>
+<body class="font-poppins bg-[#f4f9ff] text-[#333]">
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white shadow-sm flex items-center px-8 py-6 h-[118px] border-b max-w-[600px] mx-auto">
+        <a href="tailwind-profile.html" class="text-[#162f4e] text-2xl mr-4 cursor-pointer">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-bold flex-1 text-center">Quitnon Maple 360</h1>
+    </header>
+
+    <div class="max-w-4xl mx-auto pt-[140px] p-6 bg-[#f4f9ff]"> <!-- Adjust padding-top to position below the header -->
+
+        <div class="relative overflow-hidden rounded-[30px]">
+            <div class="flex transition-transform duration-500 ease-in-out" id="property-slider">
+                <img class="min-w-full rounded-2xl" src="assets/maplephoto.jpg" alt="Property Image">
+                <img class="min-w-full rounded-2xl" src="assets/Maple car seat lifestyle.webp" alt="Property Image">
+                <img class="min-w-full rounded-2xl" src="assets/profile.jpg" alt="Property Image">
+            </div>
+            <div class="absolute bottom-4 right-14 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="mt-5 mb-10">
+            <div class="text-2xl font-bold text-center">
+                【Quinton】 Maple 360 Car Seat
+            </div>
+            <div class="text-sm text-gray-600 mt-1 ml-3 text-center">
+                Let's unlock the features of the Maple 360
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center mt-4">
+            <!-- Item 1 -->
+            <div class="flex items-center bg-[#162f4e] px-4 py-5 rounded-[25px] mt-4 justify-center w-4/5 cursor-pointer" onclick="openModal('modal1')">
+                <span class="text-white text-sm">newborn – 12 years</span>
+            </div>
+        
+            <!-- Item 2 -->
+            <div class="flex items-center bg-[#162f4e] px-4 py-5 rounded-[25px] mt-4 justify-center w-4/5 cursor-pointer" onclick="openModal('modal2')">
+                <span class="text-white text-sm">Convenient 360º degree rotation</span>
+            </div>
+        
+            <!-- Item 3 (Initially hidden) -->
+            <div class="flex items-center bg-[#162f4e] px-4 py-5 rounded-[25px] mt-4 justify-center w-4/5 cursor-pointer hidden" id="item3" onclick="openModal('modal3')">
+                <span class="text-white text-sm">Patented Egg bounce technology</span>
+            </div>
+        
+            <!-- Item 4 (Initially hidden) -->
+            <div class="flex items-center bg-[#162f4e] px-4 py-5 rounded-[25px] mt-4 justify-center w-4/5 cursor-pointer hidden" id="item4" onclick="openModal('modal4')">
+                <span class="text-white text-sm">Isofix and Support Leg Installation</span>
+            </div>
+        
+            <!-- Read More/Close Button -->
+            <div class="flex items-center bg-[#fff] px-4 py-5 rounded-[25px] mt-4 justify-center w-4/5 border-2 border-[#162f4e] cursor-pointer" id="toggleButton" onclick="toggleItems()">
+                <span class="text-[#162f4e] text-sm font-bold" id="toggleButtonText">Read More</span>
+            </div>
+        </div>
+        
+        <!-- Modal 1 -->
+<div id="modal1" class="modal-container">
+    <div class="popup-container w-4/5 rounded-[30px]">
+        <span class="absolute -top-2 -right-2 cursor-pointer text-3xl text-white px-2 rounded-full bg-red-500" onclick="closeModal('modal1')">&times;</span>
+        <img src="assets/profile.jpg" alt="newborn – 12 years" class="w-full rounded-[15px] mb-4">
+        <h2 class="text-[#162f4e] text-lg font-bold">newborn – 12 years</h2>
+        <p class="text-[#162f4e] text-sm mt-2 text-justify">This car seat is designed to grow with your child, providing comfort and safety from newborn to 12 years of age.</p>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div id="modal2" class="modal-container">
+    <div class="popup-container w-4/5 rounded-[30px]">
+        <span class="absolute -top-2 -right-2 cursor-pointer text-3xl text-white px-2 rounded-full bg-red-500" onclick="closeModal('modal2')">&times;</span>
+        <img src="assets/rotation.jpg" alt="Convenient 360º degree rotation" class="w-full rounded-[15px] mb-4">
+        <h2 class="text-[#162f4e] text-lg font-bold">Convenient 360º degree rotation</h2>
+        <p class="text-[#162f4e] text-sm mt-2 text-justify">Easily rotate the car seat to make getting your child in and out hassle-free, with a full 360º degree range.</p>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div id="modal3" class="modal-container">
+    <div class="popup-container w-4/5 rounded-[30px]">
+        <span class="absolute -top-2 -right-2 cursor-pointer text-3xl text-white px-2 rounded-full bg-red-500" onclick="closeModal('modal3')">&times;</span>
+        <img src="assets/egg-bounce.jpg" alt="Patented Egg bounce technology" class="w-full rounded-[15px] mb-4">
+        <h2 class="text-[#162f4e] text-lg font-bold">Patented Egg bounce technology</h2>
+        <p class="text-[#162f4e] text-sm mt-2 text-justify">Our patented Egg Bounce technology ensures maximum impact absorption, keeping your child safe in any situation.</p>
+    </div>
+</div>
+
+<!-- Modal 4 -->
+<div id="modal4" class="modal-container">
+    <div class="popup-container w-4/5 rounded-[30px]">
+        <span class="absolute -top-2 -right-2 cursor-pointer text-3xl text-white px-2 rounded-full bg-red-500" onclick="closeModal('modal4')">&times;</span>
+        <img src="assets/isofix.jpg" alt="Isofix and Support Leg Installation" class="w-full rounded-[15px] mb-4">
+        <h2 class="text-[#162f4e] text-lg font-bold">Isofix and Support Leg Installation</h2>
+        <p class="text-[#162f4e] text-sm mt-2 text-justify">The Isofix system with support leg ensures a secure fit for your car seat, providing maximum safety for your child.</p>
+    </div>
+</div>
+
+
+<div class="mb-32">
+        <div class="mt-20 mb-10">
+            <div class="text-2xl font-bold text-center">
+                Tips and Tricks For Parent
+            </div>
+            <div class="text-sm text-gray-600 mt-1 ml-3 text-center">
+                Discover our tips and tricks for Maple 360
+            </div>
+        </div>
+        
+        <div class="relative overflow-hidden rounded-[30px] mb-10">
+            <div class="flex transition-transform duration-500 ease-in-out" id="tips-slider">
+                <div class="relative min-w-full cursor-pointer" onclick="window.location.href='page1.html'">
+                    <img src="assets/Maple car seat lifestyle.webp" alt="Tips and Tricks 1" class="w-full h-[200px] rounded-[30px] object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center rounded-[30px]">
+                        <div class="text-white text-lg font-semibold">Explore Tips & Tricks 1</div>
+                        <button class="mt-4 px-6 py-2 bg-white text-[#162f4e] rounded-full text-sm font-bold">Learn More</button>
+                    </div>
+                </div>
+                <div class="relative min-w-full cursor-pointer" onclick="window.location.href='page2.html'">
+                    <img src="assets/Untitled-19.webp" alt="Tips and Tricks 2" class="w-full h-[200px] rounded-[30px] object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center rounded-[30px]">
+                        <div class="text-white text-lg font-semibold">Explore Tips & Tricks 2</div>
+                        <button class="mt-4 px-6 py-2 bg-white text-[#162f4e] rounded-full text-sm font-bold">Learn More</button>
+                    </div>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+            <div class="absolute bottom-4 right-14 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-white w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-md text-[#162f4e] arrow-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+
+    
+    <script>
+function toggleItems() {
+    const item3 = document.getElementById('item3');
+    const item4 = document.getElementById('item4');
+    const toggleButtonText = document.getElementById('toggleButtonText');
+    
+    // Toggle visibility of items
+    item3.classList.toggle('hidden');
+    item4.classList.toggle('hidden');
+
+    // Update button text based on visibility
+    if (item3.classList.contains('hidden')) {
+        toggleButtonText.textContent = 'Read More';
+    } else {
+        toggleButtonText.textContent = 'Close';
+    }
+}
+
+
+        function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const modals = document.querySelectorAll('.modal-container');
+        modals.forEach(modal => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            // JavaScript for property image slider
+            const propertySlider = document.getElementById('property-slider');
+            let propertyIndex = 0;
+
+            function showNextPropertySlide() {
+                propertyIndex = (propertyIndex + 1) % propertySlider.children.length;
+                propertySlider.style.transform = `translateX(-${propertyIndex * 100}%)`;
+            }
+
+            function showPreviousPropertySlide() {
+                propertyIndex = (propertyIndex - 1 + propertySlider.children.length) % propertySlider.children.length;
+                propertySlider.style.transform = `translateX(-${propertyIndex * 100}%)`;
+            }
+
+            setInterval(showNextPropertySlide, 5000); // Change slide every 5 seconds
+
+            document.querySelectorAll('.arrow-left').forEach(button => {
+                button.addEventListener('click', showPreviousPropertySlide);
+            });
+
+            document.querySelectorAll('.arrow-right').forEach(button => {
+                button.addEventListener('click', showNextPropertySlide);
+            });
+
+            // JavaScript for tips and tricks slider
+            const tipsSlider = document.getElementById('tips-slider');
+            let tipsIndex = 0;
+
+            function showNextTipsSlide() {
+                tipsIndex = (tipsIndex + 1) % tipsSlider.children.length;
+                tipsSlider.style.transform = `translateX(-${tipsIndex * 100}%)`;
+            }
+
+            function showPreviousTipsSlide() {
+                tipsIndex = (tipsIndex - 1 + tipsSlider.children.length) % tipsSlider.children.length;
+                tipsSlider.style.transform = `translateX(-${tipsIndex * 100}%)`;
+            }
+
+            document.querySelectorAll('.arrow-left').forEach(button => {
+                button.addEventListener('click', showPreviousTipsSlide);
+            });
+
+            document.querySelectorAll('.arrow-right').forEach(button => {
+                button.addEventListener('click', showNextTipsSlide);
+            });
+        });
+    </script>
+
+</body>
+</html>
